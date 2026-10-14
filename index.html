@@ -116,6 +116,10 @@ h2{font-size:22px;font-weight:700;margin:0 0 4px 0}
 .log .ln{opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
 .log .ln.show{opacity:1;transform:none}
 .log .ok{color:var(--ok)} .log .bad{color:var(--bad);font-weight:700} .log .wait{color:var(--gold-deep)}
+.report{display:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13.5px}
+.report.show{display:block;animation:swapin .35s ease}
+.report b{font-family:Archivo,sans-serif;font-size:11.5px;letter-spacing:.1em;color:var(--gold-deep);display:block;margin-bottom:5px}
+.report p{margin:0;font-style:italic}
 .checkpoint{border:1.5px solid var(--gold);background:var(--new-bg);border-radius:10px;padding:12px 14px;display:none;gap:10px;align-items:center;flex-wrap:wrap;font-size:14px}
 .checkpoint.show{display:flex}
 .cbtn{font-family:Archivo,sans-serif;font-weight:700;font-size:13px;border-radius:8px;padding:8px 16px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
@@ -303,8 +307,12 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     <div class="logwrap">
       <button class="runbtn" id="runAgent">&#9654; Run the agent</button>
       <div class="log" id="agentLog" aria-live="polite"><span class="placeholder">Every step the agent takes will show up here, in order. This is its action log.</span></div>
+      <div class="report" id="agentReport">
+        <b>THE REPORT IT WANTS TO SEND</b>
+        <p>"Practice lab check complete. Found 3 weak spots: two old passwords and one unlocked shared folder. Recommend fixing before next session."</p>
+      </div>
       <div class="checkpoint" id="checkpoint">
-        <span><strong>Rule 7 · Human checkpoint.</strong> The agent finished and wants to send its report out. It cannot send without you. You just read its four steps — do you let the report go?</span>
+        <span><strong>Rule 7 · Human checkpoint.</strong> The agent cannot send without you. You have its report above and its four steps in the log. Do you let the report go out?</span>
         <button class="cbtn stop" data-v="stop">Stop it</button>
         <button class="cbtn" data-v="approve">Approve</button>
       </div>
@@ -416,6 +424,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   var btn = document.getElementById('runAgent');
   var log = document.getElementById('agentLog');
   var checkpoint = document.getElementById('checkpoint');
+  var report = document.getElementById('agentReport');
   var verdict = document.getElementById('verdict');
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var LINES = [
@@ -428,6 +437,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   function reset(){
     timers.forEach(clearTimeout); timers = [];
     log.innerHTML = '';
+    report.classList.remove('show');
     checkpoint.classList.remove('show');
     verdict.className = 'verdict'; verdict.textContent = '';
   }
@@ -443,7 +453,10 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
         log.appendChild(el);
         requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.classList.add('show'); }); });
         if(i === LINES.length - 1){
-          timers.push(setTimeout(function(){ checkpoint.classList.add('show'); }, reduced ? 0 : 500));
+          timers.push(setTimeout(function(){
+            report.classList.add('show');
+            checkpoint.classList.add('show');
+          }, reduced ? 0 : 500));
         }
       }, gap * (i + 1)));
     });
@@ -454,10 +467,10 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       checkpoint.classList.remove('show');
       if(b.getAttribute('data-v') === 'stop'){
         verdict.className = 'verdict good show';
-        verdict.innerHTML = '<strong>Right call.</strong> In step 3 the agent went somewhere it had no permission to go, and reading the log is how you caught it. That is the whole lesson: with an agent, you review what it <em>did</em>, not just what it wrote — and a human sits in front of anything that leaves the room.';
+        verdict.innerHTML = '<strong>Right call.</strong> Read the report again: it never mentions the email system. The report looked clean — only the action log told the truth about step 3. That is the whole lesson: with an agent, you review what it <em>did</em>, not just what it wrote, and a human sits in front of anything that leaves the room.';
       } else {
         verdict.className = 'verdict warn show';
-        verdict.innerHTML = '<strong>Look at step 3 again.</strong> The agent went into the company’s email system without permission, and approving sends that mistake forward. The report it wrote may read fine — the problem is in what it <em>did</em>. An agent is judged on its action log, not its final answer. Run it again and read before you click.';
+        verdict.innerHTML = '<strong>You judged the report, not the agent.</strong> The report reads fine — that is exactly the trap, because it says nothing about step 3, where the agent went into the company’s email system without permission. Only the action log showed what really happened. Run it again and read the log before you click.';
       }
       btn.disabled = false;
       btn.innerHTML = '↺ Run it again';
