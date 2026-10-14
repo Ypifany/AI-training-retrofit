@@ -44,9 +44,9 @@ The playbook page shows four before/after slide pairs from the real deck:
 
 Images of all eight slides are in [`img/`](img/).
 
-## Not just one program: the three swaps
+## The same process in other training: only three things change
 
-The six moves and five rules are universal. Porting the process to another course means swapping three parameters:
+The six moves and five rules are universal, and the existing course is never replaced — the AI step is always added after an existing activity, extending the same task. Moving the process to another kind of training changes only three things:
 
 1. **The AI assistant.** A classroom Gem, a corporate copilot, ChatGPT, Claude — whatever the audience already has access to. The moves don't care which model answers.
 2. **The assessment target.** What "verified" means in that domain: a CompTIA course checks the AI against the exam objectives and lab output; compliance training checks the AI **against the policy itself**; vendor training checks it against the product's actual behavior.
@@ -71,4 +71,4 @@ Introduce agents on a crawl/walk/run sequence: students first verify AI *answers
 
 ---
 
-*Built by Cheryl Abram. The worked example comes from the Cyber's Future program at Future Kings, a nonprofit STEM academy; the process is designed to apply equally to CompTIA-aligned courses, corporate compliance training, and vendor product training.*
+*An Ypifany process, built by Cheryl Abram. The worked example comes from the deck "Information Technology, Networking, and Security Fundamentals: Session 2 — Ethics & Core IT and Security Principles," used in the Cyber's Future program at Future Kings, a nonprofit STEM academy. The process applies equally to CompTIA-aligned courses, corporate compliance training, and vendor product training.*
