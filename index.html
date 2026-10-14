@@ -92,6 +92,10 @@ h2{font-size:22px;font-weight:700;margin:0 0 4px 0}
 .swap .slot{font-family:Archivo,sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--gold-deep);display:block;margin-bottom:6px}
 .swap .val{font-size:14.5px;line-height:1.45;margin:0}
 .swap.flip .val{animation:swapin .35s ease}
+.lesson-ex{margin-top:10px;background:var(--navy);color:var(--navy-ink);border-radius:10px;padding:14px 16px}
+.lesson-ex b{font-family:Archivo,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--gold);display:block;margin-bottom:5px}
+.lesson-ex p{margin:0;font-size:14.5px;line-height:1.5}
+.lesson-ex.flip p{animation:swapin .35s ease}
 @keyframes swapin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.swap.flip .val{animation:none}}
 
@@ -139,9 +143,9 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 
 <div class="wrap">
 <header class="top">
-  <div class="eyebrow">FUTURE KINGS STEM ACADEMY · OFFICE OF THE CHIEF LEARNING OFFICER</div>
+  <div class="eyebrow">AN YPIFANY PROCESS</div>
   <h1>AI Retrofit Playbook</h1>
-  <p class="lede">How to add AI to a lesson we already teach: slowly, responsibly, and at little to no cost. The process below works for any lesson in any program. The worked example uses a real Cyber's Future deck, Session 2: Ethics and Core IT and Security Principles.</p>
+  <p class="lede">How to add AI to a course you already teach: slowly, responsibly, and at little to no cost. Nothing gets replaced. The existing slides and activities stay, and one AI step is added after them as an extension of the same task. The process works for any lesson in any training program, and it is shown below on a real deck.</p>
 </header>
 
 <section>
@@ -152,7 +156,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     <div class="rule"><b>AI after the first attempt</b><span>The student decodes, runs, or writes first. AI is the second opinion.</span></div>
     <div class="rule"><b>Verification is graded</b><span>The student proves the AI right or wrong with the tool in front of him.</span></div>
     <div class="rule"><b>Disclosure, no penalty</b><span>One line on the submission saying how AI helped. Never affects the grade.</span></div>
-    <div class="rule"><b>Little to no cost</b><span>The Gem we already deploy, plus free and open-source tools.</span></div>
+    <div class="rule"><b>Little to no cost</b><span>Free tiers, open tools, or the AI the program already pays for.</span></div>
   </div>
 </section>
 
@@ -163,15 +167,15 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     <div class="step"><div class="n">1</div><div><b>Pick one existing activity.</b><p>Choose the activity where a working professional would already be using AI. Do not write a new activity.</p></div></div>
     <div class="step"><div class="n">2</div><div><b>Choose the touchpoint type.</b><p>Before (AI as a coach to get unstuck), During (AI interprets a tool's output), or After (AI reviews the student's finished work). One per lesson.</p></div></div>
     <div class="step"><div class="n">3</div><div><b>Keep the first attempt human.</b><p>The AI step always comes after the student's own attempt. If AI would erase the struggle the activity exists for, move the touchpoint later.</p></div></div>
-    <div class="step"><div class="n">4</div><div><b>Make verification the submission.</b><p>Whatever the AI said, the student's deliverable is proof it was right or wrong. This maps to the Process and Independence bucket on the FK Assessment, so grading does not change.</p></div></div>
+    <div class="step"><div class="n">4</div><div><b>Make verification the submission.</b><p>Whatever the AI said, the student's deliverable is proof it was right or wrong. This maps onto whatever already grades the course — in the worked example, the Process and Independence bucket on the FK Assessment — so grading does not change.</p></div></div>
     <div class="step"><div class="n">5</div><div><b>Add one learning objective.</b><p>Write it in standard form, for example: "Students will verify AI-generated output using an independent tool." The lesson's existing objectives stay as they are.</p></div></div>
     <div class="step"><div class="n">6</div><div><b>Add the disclosure line.</b><p>The submission includes one sentence on how AI helped. Disclosure is the habit being built; it never affects the grade.</p></div></div>
   </div>
 </section>
 
 <section>
-  <h2>Worked example: Session 2, before and after</h2>
-  <p class="sub">Four places this one real deck could take an AI touchpoint. An instructor picks <strong>one</strong> per session, not all four. Click through each option: the left card is the existing slide, quoted from the deck; the right card is the proposed addition.</p>
+  <h2>Worked example: one real deck, before and after</h2>
+  <p class="sub">The deck: <strong>"Information Technology, Networking, and Security Fundamentals: Session 2 — Ethics &amp; Core IT and Security Principles,"</strong> from the Cyber's Future program at Future Kings. Four places this one deck could take an AI touchpoint. An instructor picks <strong>one</strong> per session, not all four. Click through each option: the left card is the existing slide, which stays exactly as it is; the right card is the new slide added after it, extending the same task.</p>
 
   <div class="tabs" role="tablist" aria-label="Retrofit options">
     <button class="tab" role="tab" id="tab-a" aria-selected="true" aria-controls="pane-a">1 · The energizer</button>
@@ -260,8 +264,8 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 </section>
 
 <section>
-  <h2>Beyond one program: the same process, three swaps</h2>
-  <p class="sub">The six moves never change. Only three things do. Click a training type and watch what actually swaps.</p>
+  <h2>The same process works in other training</h2>
+  <p class="sub">The six moves and the ground rules never change, and the existing course is never replaced. Moving this process to a different kind of training changes only three things: which AI the learner uses, what the learner checks the AI against, and whose private information gets protected. Click a training type and watch those three change while everything else holds still.</p>
   <div class="pills" id="ctxPills" role="group" aria-label="Pick a training type">
     <button class="pill" aria-pressed="true" data-ctx="fk">Future Kings STEM</button>
     <button class="pill" aria-pressed="false" data-ctx="comptia">CompTIA course</button>
@@ -273,32 +277,34 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     <span class="mv">1 Pick the activity</span><span class="mv">2 Choose the touchpoint</span><span class="mv">3 Human first</span><span class="mv">4 Verify to submit</span><span class="mv">5 One new objective</span><span class="mv">6 Disclose</span>
   </div>
   <div class="swaps">
-    <div class="swap"><span class="slot">SWAP 1 · THE AI ASSISTANT</span><p class="val" id="sw1"></p></div>
-    <div class="swap"><span class="slot">SWAP 2 · VERIFY AGAINST</span><p class="val" id="sw2"></p></div>
-    <div class="swap"><span class="slot">SWAP 3 · WHAT RULE 3 PROTECTS</span><p class="val" id="sw3"></p></div>
+    <div class="swap"><span class="slot">CHANGE 1 · WHICH AI THE LEARNER USES</span><p class="val" id="sw1"></p></div>
+    <div class="swap"><span class="slot">CHANGE 2 · WHAT THEY CHECK THE AI AGAINST</span><p class="val" id="sw2"></p></div>
+    <div class="swap"><span class="slot">CHANGE 3 · WHAT GETS PROTECTED</span><p class="val" id="sw3"></p></div>
   </div>
+  <div class="lesson-ex"><b>ONE RETROFITTED LESSON LOOKS LIKE THIS</b><p id="swEx"></p></div>
   <p class="why" id="swNote"></p>
 </section>
 
 <section>
   <h2>When the AI acts: two added rules for agents</h2>
-  <p class="sub">Generative AI answers questions. An agent takes actions: it runs the scan, files the ticket, executes the steps. That adds two rules. Don't read them — run the agent below and use them.</p>
+  <p class="sub">Generative AI answers questions. An agent does work on its own: you give it a job, it takes the steps, and you see what it did afterward. That adds two rules. Don't read about them — try them. You gave an agent this job: <strong>"Check the practice lab's computers for weak spots and write me a report."</strong> Now run it, and read what it does.</p>
   <div class="demo">
     <div class="roe">
       <b>RULE 6 · SCOPE BEFORE ACTION</b>
+      <p class="roenote" style="margin:0 0 8px 0">Before the agent starts, the learner writes its boundaries:</p>
       <ul>
-        <li>May scan: <strong>practice-lab.local</strong></li>
-        <li>May summarize what it finds</li>
+        <li>May look at: <strong>the practice lab only</strong></li>
+        <li>May write up what it finds</li>
         <li class="no">May not touch anything outside the lab</li>
-        <li class="no">May not send or change anything without a human</li>
+        <li class="no">May not send anything until a human says yes</li>
       </ul>
       <p class="roenote">Security students already know this contract: Rules of Engagement. An agent signs the same one a penetration tester does.</p>
     </div>
     <div class="logwrap">
       <button class="runbtn" id="runAgent">&#9654; Run the agent</button>
-      <div class="log" id="agentLog" aria-live="polite"><span class="placeholder">The agent's action log will appear here.</span></div>
+      <div class="log" id="agentLog" aria-live="polite"><span class="placeholder">Every step the agent takes will show up here, in order. This is its action log.</span></div>
       <div class="checkpoint" id="checkpoint">
-        <span><strong>Rule 7 · Human checkpoint.</strong> The agent wants to send its report. You've read the log. Your call:</span>
+        <span><strong>Rule 7 · Human checkpoint.</strong> The agent finished and wants to send its report out. It cannot send without you. You just read its four steps — do you let the report go?</span>
         <button class="cbtn stop" data-v="stop">Stop it</button>
         <button class="cbtn" data-v="approve">Approve</button>
       </div>
@@ -321,8 +327,8 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 </section>
 
 <footer>
-  <div>Worked example source: Cyber's Future, Session 2: Ethics and Core IT and Security Principles.</div>
-  <div>Future Kings STEM Academy</div>
+  <div>Worked example source: "Information Technology, Networking, and Security Fundamentals: Session 2 — Ethics &amp; Core IT and Security Principles," Cyber's Future program, Future Kings.</div>
+  <div>Ypifany</div>
 </footer>
 </div>
 
@@ -351,40 +357,45 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 (function(){
   var CTX = {
     fk: {
-      s1: "The FK Gem — the coach tool we already deploy. Cost: nothing new.",
+      s1: "The Gem coach tool the program already deploys. Cost: nothing new.",
       s2: "The tool in front of the student: the translator, Task Manager, the live attack map.",
       s3: "Student privacy. No student information ever goes into an AI tool.",
+      ex: "A student decodes a binary message by hand (the existing activity, unchanged). New slide after it: he asks the Gem to decode the same message, then proves the Gem right or wrong with his own translator.",
       note: "This is the worked example above, exactly as shown."
     },
     comptia: {
       s1: "The learner's own chat assistant. A free tier is enough.",
-      s2: "The exam objectives and the output of the lab the learner already runs.",
-      s3: "Practice-scenario data and the learner's employer details.",
-      note: "Same six moves. The lab becomes the verification tool, and the added objective maps straight onto an exam objective."
+      s2: "The lab the learner already runs, plus the official exam objectives.",
+      s3: "Work details learners paste in while practicing — real company names, real network information.",
+      ex: "The learner sets up a small network in the lab (the existing exercise, unchanged). New step after it: ask the AI to explain what each setting does, then test the AI's explanation against what the lab actually shows.",
+      note: "The added learning objective maps straight onto an exam objective, so the course still prepares for the same test."
     },
     compliance: {
-      s1: "The copilot the company has approved. Choosing it is a compliance decision, not a preference.",
-      s2: "The policy document itself. No hands-on tool needed.",
-      s3: "Company and client data. Pasting the wrong thing into an AI tool can itself be a reportable incident, so this rule becomes lesson content.",
-      note: "The one real adaptation: with no hands-on project, the learner checks the AI against the policy instead of against a tool. Same move, different reference document."
+      s1: "The copilot the company has approved. Picking it is a compliance decision, not a preference.",
+      s2: "The policy document itself. No lab or tool needed.",
+      s3: "Company and client data. Pasting the wrong thing into an AI tool can itself be a reportable incident, so this protection becomes part of the lesson.",
+      ex: "The employee answers a scenario question first (the existing quiz, unchanged). New step after it: ask the AI the same question, then check the AI's answer against the actual policy and flag where the AI got it wrong.",
+      note: "The one real adaptation: with no hands-on tool, the learner checks the AI against the policy document. Same move, different reference."
     },
     vendor: {
       s1: "Whatever the customer's own AI policy allows.",
-      s2: "The product's actual behavior in the demo or sandbox environment.",
-      s3: "Customer environments, credentials, and configuration details.",
-      note: "Same six moves. The sandbox the training already uses becomes the verification tool."
+      s2: "The product itself, in the demo or sandbox environment.",
+      s3: "Customer environments, passwords, and configuration details.",
+      ex: "The customer completes a task in the sandbox (the existing walkthrough, unchanged). New step after it: ask the AI how it would do the same task, then try the AI's steps and report which ones fail.",
+      note: "The sandbox the training already uses becomes the verification tool. Nothing new gets built."
     }
   };
   var pills = Array.prototype.slice.call(document.querySelectorAll('#ctxPills .pill'));
   var sw1 = document.getElementById('sw1'), sw2 = document.getElementById('sw2'),
-      sw3 = document.getElementById('sw3'), note = document.getElementById('swNote');
+      sw3 = document.getElementById('sw3'), note = document.getElementById('swNote'),
+      ex = document.getElementById('swEx'), exBox = document.querySelector('.lesson-ex');
   var cards = Array.prototype.slice.call(document.querySelectorAll('.swap'));
   function apply(key, animate){
     var c = CTX[key];
     sw1.textContent = c.s1; sw2.textContent = c.s2; sw3.textContent = c.s3;
-    note.textContent = c.note;
+    ex.textContent = c.ex; note.textContent = c.note;
     if(animate){
-      cards.forEach(function(card){
+      cards.concat([exBox]).forEach(function(card){
         card.classList.remove('flip');
         void card.offsetWidth; /* restart animation */
         card.classList.add('flip');
@@ -408,10 +419,10 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   var verdict = document.getElementById('verdict');
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var LINES = [
-    { cls: 'ok',   text: '✓ Scanned practice-lab.local — found 3 open ports (in scope)' },
-    { cls: 'ok',   text: '✓ Summarized findings (in scope)' },
-    { cls: 'bad',  text: '✗ Tried to scan corp-mail.internal — OUT OF SCOPE' },
-    { cls: 'wait', text: '⏸ Paused: wants to send the report. Waiting for a human…' }
+    { cls: 'ok',   text: 'Step 1 ✓ Checked the practice lab’s computers. Found 3 weak spots. (allowed)' },
+    { cls: 'ok',   text: 'Step 2 ✓ Wrote up what it found. (allowed)' },
+    { cls: 'bad',  text: 'Step 3 ✗ Started checking the company’s EMAIL system. Nobody gave it permission to go there. (NOT allowed)' },
+    { cls: 'wait', text: 'Step 4 ⏸ Wants to send the report out. Stopped and asked a human first…' }
   ];
   var timers = [];
   function reset(){
@@ -443,10 +454,10 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       checkpoint.classList.remove('show');
       if(b.getAttribute('data-v') === 'stop'){
         verdict.className = 'verdict good show';
-        verdict.innerHTML = '<strong>Right call.</strong> Step 3 left the agreed scope, and the log is how you caught it. That is the whole lesson: with an agent, the learner reviews the actions, not just the answer — and a human sits before anything that changes the world.';
+        verdict.innerHTML = '<strong>Right call.</strong> In step 3 the agent went somewhere it had no permission to go, and reading the log is how you caught it. That is the whole lesson: with an agent, you review what it <em>did</em>, not just what it wrote — and a human sits in front of anything that leaves the room.';
       } else {
         verdict.className = 'verdict warn show';
-        verdict.innerHTML = '<strong>Look at step 3 again.</strong> The agent touched a system outside its scope, and approving sends that mistake forward. An agent is reviewed on its action log, not its final answer. Run it again and read before you click.';
+        verdict.innerHTML = '<strong>Look at step 3 again.</strong> The agent went into the company’s email system without permission, and approving sends that mistake forward. The report it wrote may read fine — the problem is in what it <em>did</em>. An agent is judged on its action log, not its final answer. Run it again and read before you click.';
       }
       btn.disabled = false;
       btn.innerHTML = '↺ Run it again';
