@@ -116,6 +116,15 @@ h2{font-size:22px;font-weight:700;margin:0 0 4px 0}
 .log .ln{opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
 .log .ln.show{opacity:1;transform:none}
 .log .ok{color:var(--ok)} .log .bad{color:var(--bad);font-weight:700} .log .wait{color:var(--gold-deep)}
+.realbox{margin-top:26px;background:var(--navy);color:var(--navy-ink);border-radius:12px;padding:20px 22px}
+.realbox .rtag{font-family:Archivo,sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.12em;color:var(--gold);display:block;margin-bottom:6px}
+.realbox h3{font-size:19px;margin:0 0 8px 0;color:var(--navy-ink)}
+.realbox p{font-size:14px;line-height:1.5;margin:0 0 12px 0;opacity:.95}
+.realbox .rrules{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.realbox .rrules{grid-template-columns:1fr}}
+.realbox .rrule{background:rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;font-size:13.5px;line-height:1.45}
+.realbox .rrule b{font-family:Archivo,sans-serif;font-size:12.5px;color:var(--gold);display:block;margin-bottom:4px}
+.realbox .rnote{font-size:12.5px;opacity:.8;margin:12px 0 0 0;font-style:italic}
 .report{display:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13.5px}
 .report.show{display:block;animation:swapin .35s ease}
 .report b{font-family:Archivo,sans-serif;font-size:11.5px;letter-spacing:.1em;color:var(--gold-deep);display:block;margin-bottom:5px}
@@ -336,6 +345,17 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     </div>
   </div>
   <p class="why">One new slide, same as the AI retrofits. It is the third stage of the rollout, so it belongs in the Advanced password-cracking lab, not a beginner session.</p>
+
+  <div class="realbox">
+    <span class="rtag">THIS IS NOT HYPOTHETICAL</span>
+    <h3>Your students already have an agent: Gemini's Task mode</h3>
+    <p>The lab agent above runs on a walled-off Kali machine. But Gemini now has an agent anyone can turn on, and it lives in Google's cloud and acts inside your own Google apps. Its Task mode does jobs on its own: it reads and sorts your Gmail, changes your calendar, builds files, and even opens websites to shop or book things. It can run on a schedule, like every morning. That is a real agent, and the two rules fit it word for word. Google built both of them right into the controls.</p>
+    <div class="rrules">
+      <div class="rrule"><b>RULE 6 · SCOPE BEFORE ACTION</b>Before it runs, you pick what it can reach. Google's own warning: never put passwords or private details into the task. That is scope, in their words.</div>
+      <div class="rrule"><b>RULE 7 · REVIEW THE ACTIONS</b>Task shows you every step it took and every file it opened, and lets you stop it. It also asks before it sends, buys, or changes anything. That is the human checkpoint, built in.</div>
+    </div>
+    <p class="rnote">One honest limit: Task needs a paid Gemini plan and a personal Google account, so not every student will have it. But the moment one does turn it on, he is supervising an agent, and this playbook is how he does it safely.</p>
+  </div>
 </section>
 
 <section>
