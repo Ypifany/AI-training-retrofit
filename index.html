@@ -1,0 +1,265 @@
+<title>AI Retrofit Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: single column playbook; process rail, then a before/after slide viewer with tab click-through */
+:root{
+  --bg:#F7F5F0; --surface:#FFFFFF; --ink:#1D1F24; --muted:#5C5F66;
+  --navy:#1C2B4B; --navy-ink:#FFFFFF; --gold:#C9A227; --gold-deep:#8A6D15;
+  --line:#DFDBD0; --slide-bg:#FDFCF9; --new-bg:#F2EEE2;
+  --chip-bg:#E9E4D6;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#15171C; --surface:#1E2128; --ink:#ECEAE4; --muted:#9FA3AC;
+  --navy:#24355C; --navy-ink:#F2F1EC; --gold:#D9B544; --gold-deep:#D9B544;
+  --line:#33363E; --slide-bg:#23262E; --new-bg:#2A2C26;
+  --chip-bg:#2E3139; color-scheme: dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#15171C; --surface:#1E2128; --ink:#ECEAE4; --muted:#9FA3AC;
+  --navy:#24355C; --navy-ink:#F2F1EC; --gold:#D9B544; --gold-deep:#D9B544;
+  --line:#33363E; --slide-bg:#23262E; --new-bg:#2A2C26;
+  --chip-bg:#2E3139; color-scheme: dark;
+}
+body{background:var(--bg);color:var(--ink);font-family:'Source Sans 3',sans-serif;line-height:1.5;padding-inline:16px;padding-block:0 48px;margin:0}
+.wrap{max-width:980px;margin:0 auto}
+h1,h2,h3{font-family:Archivo,sans-serif;text-wrap:balance}
+.eyebrow{font-family:Archivo,sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--gold-deep)}
+header.top{padding-block:44px 10px;display:flex;flex-direction:column;gap:10px}
+h1{font-size:clamp(30px,5vw,44px);font-weight:800;color:var(--ink);margin:0;line-height:1.05}
+.lede{font-size:17px;color:var(--muted);max-width:62ch;text-wrap:pretty;margin:0}
+section{margin-top:40px}
+h2{font-size:22px;font-weight:700;margin:0 0 4px 0}
+.sub{color:var(--muted);font-size:14.5px;margin:0 0 16px 0;max-width:68ch}
+
+/* rules strip */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.rule{background:var(--navy);color:var(--navy-ink);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.rule b{font-family:Archivo,sans-serif;font-size:13.5px;color:var(--gold)}
+.rule span{font-size:12.5px;line-height:1.4;opacity:.92}
+
+/* process steps */
+.steps{display:flex;flex-direction:column;gap:10px;counter-reset:step}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:14px;align-items:flex-start}
+.step .n{font-family:Archivo,sans-serif;font-weight:800;font-size:17px;color:var(--gold-deep);min-width:24px;text-align:center}
+.step b{font-family:Archivo,sans-serif;font-size:15px}
+.step p{margin:2px 0 0 0;font-size:14px;color:var(--muted);max-width:75ch}
+
+/* tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tab{font-family:Archivo,sans-serif;font-weight:600;font-size:13.5px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:9px 16px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+.tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* before/after panel */
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.panel{grid-template-columns:1fr}}
+.col{display:flex;flex-direction:column;gap:8px;min-width:0}
+.collabel{font-family:Archivo,sans-serif;font-weight:700;font-size:12px;letter-spacing:.12em}
+.collabel.before{color:var(--muted)}
+.collabel.after{color:var(--gold-deep)}
+.slide{background:var(--slide-bg);border:1px solid var(--line);border-radius:10px;padding:18px 20px;min-height:230px;display:flex;flex-direction:column;gap:8px}
+.slide.new{border:1.5px solid var(--gold);background:var(--new-bg)}
+.slide .snum{font-size:11.5px;color:var(--muted);font-family:Archivo,sans-serif;font-weight:600;letter-spacing:.08em}
+.slide h3{font-size:18px;margin:0;color:var(--ink)}
+.slide ul{margin:0;padding-left:18px;font-size:13.5px;display:flex;flex-direction:column;gap:5px}
+.slide .note{border-top:1px solid var(--line);padding-top:8px;font-size:12.5px;color:var(--muted);font-style:italic}
+.shot{width:100%;max-width:100%;display:block;border:1px solid var(--line);border-radius:8px}
+.shot.new{border:2px solid var(--gold)}
+.cap{font-size:12.5px;color:var(--muted);font-style:italic;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--chip-bg);border-radius:999px;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;padding:5px 12px}
+.chip.gold{background:var(--gold);color:#1C2B4B}
+.lo{background:var(--surface);border:1px solid var(--line);border-left:none;border-radius:10px;padding:12px 16px;font-size:14px;margin-top:14px}
+.lo b{font-family:Archivo,sans-serif;font-size:12.5px;letter-spacing:.1em;color:var(--gold-deep);display:block;margin-bottom:3px}
+.why{margin-top:10px;font-size:14px;color:var(--muted);max-width:75ch}
+
+/* evaluation */
+.evals{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.eval{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.eval b{font-family:Archivo,sans-serif;font-size:14.5px;display:block;margin-bottom:4px}
+.eval p{margin:0;font-size:13px;color:var(--muted)}
+footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">FUTURE KINGS STEM ACADEMY · OFFICE OF THE CHIEF LEARNING OFFICER</div>
+  <h1>AI Retrofit Playbook</h1>
+  <p class="lede">How to add AI to a lesson we already teach: slowly, responsibly, and at little to no cost. The process below works for any lesson in any program. The worked example uses a real Cyber's Future deck, Session 2: Ethics and Core IT and Security Principles.</p>
+</header>
+
+<section>
+  <h2>The ground rules</h2>
+  <p class="sub">Every retrofit follows these five rules. They are what makes the rollout slow and responsible instead of fast and sloppy.</p>
+  <div class="rules">
+    <div class="rule"><b>One touchpoint per lesson</b><span>AI enters one existing activity. It never becomes the lesson.</span></div>
+    <div class="rule"><b>AI after the first attempt</b><span>The student decodes, runs, or writes first. AI is the second opinion.</span></div>
+    <div class="rule"><b>Verification is graded</b><span>The student proves the AI right or wrong with the tool in front of him.</span></div>
+    <div class="rule"><b>Disclosure, no penalty</b><span>One line on the submission saying how AI helped. Never affects the grade.</span></div>
+    <div class="rule"><b>Little to no cost</b><span>The Gem we already deploy, plus free and open-source tools.</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>The process, for any lesson</h2>
+  <p class="sub">Six moves. The lesson's learning objectives stay. One new objective is added. Assessment does not change.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div><b>Pick one existing activity.</b><p>Choose the activity where a working professional would already be using AI. Do not write a new activity.</p></div></div>
+    <div class="step"><div class="n">2</div><div><b>Choose the touchpoint type.</b><p>Before (AI as a coach to get unstuck), During (AI interprets a tool's output), or After (AI reviews the student's finished work). One per lesson.</p></div></div>
+    <div class="step"><div class="n">3</div><div><b>Keep the first attempt human.</b><p>The AI step always comes after the student's own attempt. If AI would erase the struggle the activity exists for, move the touchpoint later.</p></div></div>
+    <div class="step"><div class="n">4</div><div><b>Make verification the submission.</b><p>Whatever the AI said, the student's deliverable is proof it was right or wrong. This maps to the Process and Independence bucket on the FK Assessment, so grading does not change.</p></div></div>
+    <div class="step"><div class="n">5</div><div><b>Add one learning objective.</b><p>Write it in standard form, for example: "Students will verify AI-generated output using an independent tool." The lesson's existing objectives stay as they are.</p></div></div>
+    <div class="step"><div class="n">6</div><div><b>Add the disclosure line.</b><p>The submission includes one sentence on how AI helped. Disclosure is the habit being built; it never affects the grade.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Worked example: Session 2, before and after</h2>
+  <p class="sub">Four places this one real deck could take an AI touchpoint. An instructor picks <strong>one</strong> per session, not all four. Click through each option: the left card is the existing slide, quoted from the deck; the right card is the proposed addition.</p>
+
+  <div class="tabs" role="tablist" aria-label="Retrofit options">
+    <button class="tab" role="tab" id="tab-a" aria-selected="true" aria-controls="pane-a">1 · The energizer</button>
+    <button class="tab" role="tab" id="tab-b" aria-selected="false" aria-controls="pane-b">2 · The ethics block</button>
+    <button class="tab" role="tab" id="tab-c" aria-selected="false" aria-controls="pane-c">3 · Processes activity</button>
+    <button class="tab" role="tab" id="tab-d" aria-selected="false" aria-controls="pane-d">4 · Live attacks</button>
+  </div>
+
+  <div id="pane-a" role="tabpanel" aria-labelledby="tab-a">
+    <div class="panel">
+      <div class="col">
+        <div class="collabel before">EXISTING · SLIDE 8, UNCHANGED</div>
+        <img class="shot" src="img/before-8.png" alt="Existing slide 8: Now You Try. Students find a binary conversion translator, encode a message, and verify it with a second translator.">
+        <p class="cap">This slide already teaches verification: one translator checks another. That is the hook the AI step hangs on.</p>
+      </div>
+      <div class="col">
+        <div class="collabel after">PROPOSED · NEW SLIDE 8B</div>
+        <img class="shot new" src="img/after-8b.png" alt="Proposed new slide 8B: Now Check the AI. Ask the Gem to decode the same binary message, check its answer against your translator result, and discuss which one you had to trust.">
+        <p class="cap">Speaker note: the Gem is just another translator. It gets verified like one. This is the first AI moment of the course, and it teaches the rule that governs all the others.</p>
+      </div>
+    </div>
+    <div class="meta" style="margin-top:12px">
+      <span class="chip gold">Touchpoint: AFTER first attempt</span><span class="chip">Tool: FK Gem</span><span class="chip">Cost: $0</span>
+    </div>
+    <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will verify AI-generated output using an independent tool.</div>
+  </div>
+
+  <div id="pane-b" role="tabpanel" aria-labelledby="tab-b" hidden>
+    <div class="panel">
+      <div class="col">
+        <div class="collabel before">EXISTING · SLIDE 17, UNCHANGED</div>
+        <img class="shot" src="img/before-17.png" alt="Existing slide 17: Permission. You must have a written and signed contract from the owner giving you permission to test. Operating without permission is unethical.">
+        <p class="cap">The ethics rule students just learned. The new slide extends it to AI with no new rules.</p>
+      </div>
+      <div class="col">
+        <div class="collabel after">PROPOSED · NEW SLIDE 17B</div>
+        <img class="shot new" src="img/after-17b.png" alt="Proposed new slide 17B: Permission Applies to AI Too. Discussion case: a developer has AI security-review her own GitHub project. Hacking or ethical hacking? Permission first; AI makes the test easier, not more legal.">
+        <p class="cap">Speaker note: AI-assisted security review of your own work is a real industry practice. The framework from slide 17 covers it.</p>
+      </div>
+    </div>
+    <div class="meta" style="margin-top:12px">
+      <span class="chip gold">Touchpoint: DISCUSSION</span><span class="chip">Tool: none needed</span><span class="chip">Cost: $0</span>
+    </div>
+    <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will apply permission-based ethics to AI-assisted security testing.</div>
+  </div>
+
+  <div id="pane-c" role="tabpanel" aria-labelledby="tab-c" hidden>
+    <div class="panel">
+      <div class="col">
+        <div class="collabel before">EXISTING · SLIDE 25</div>
+        <img class="shot" src="img/before-25.png" alt="Existing slide 25: Activity, View Your Processes. Open Task Manager, count the running processes, and find who owns them.">
+        <p class="cap">The activity stays. Two steps get added to it.</p>
+      </div>
+      <div class="col">
+        <div class="collabel after">PROPOSED · SLIDE 25 MODIFIED</div>
+        <img class="shot new" src="img/after-25m.png" alt="Proposed modified slide 25: View Your Processes, Then Interrogate One. New steps: pick one unfamiliar process, ask the Gem what it is, then open its file location and check whether the evidence matches. Submit what the AI claimed and what you found.">
+        <p class="cap">Speaker note: circulate with the usual question, aimed at the AI step: "How do you know the AI was right?"</p>
+      </div>
+    </div>
+    <div class="meta" style="margin-top:12px">
+      <span class="chip gold">Touchpoint: DURING, on tool output</span><span class="chip">Tools: Task Manager + FK Gem</span><span class="chip">Cost: $0</span>
+    </div>
+    <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will validate an AI explanation of system output through direct testing.</div>
+  </div>
+
+  <div id="pane-d" role="tabpanel" aria-labelledby="tab-d" hidden>
+    <div class="panel">
+      <div class="col">
+        <div class="collabel before">EXISTING · SLIDE 30, UNCHANGED</div>
+        <img class="shot" src="img/before-30.png" alt="Existing slide 30: Live Cyber Attacks. Students view live cyberattacks worldwide on an attack map and discuss.">
+        <p class="cap">Students already watch the live attack map here. The new slide adds the fact-check.</p>
+      </div>
+      <div class="col">
+        <div class="collabel after">PROPOSED · NEW SLIDE 30B</div>
+        <img class="shot new" src="img/after-30b.png" alt="Proposed new slide 30B: Fact-Check the AI on One Attack. Pick one attack type from the live map, ask the Gem to explain it in two sentences, check it against the confidentiality-integrity-availability definition, and share one thing the AI said that you could not verify.">
+        <p class="cap">Speaker note: "one thing you could not verify" is the point. An unverifiable claim is a flag, not a fact.</p>
+      </div>
+    </div>
+    <div class="meta" style="margin-top:12px">
+      <span class="chip gold">Touchpoint: AFTER, against course material</span><span class="chip">Tools: attack map + FK Gem</span><span class="chip">Cost: $0</span>
+    </div>
+    <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will evaluate the accuracy of an AI explanation against course material.</div>
+  </div>
+
+  <p class="why">Why these four work: each one adds AI at a spot where the deck already asks for exploration or verification, so the AI step feels like the lesson continuing, not a new lesson starting. Total new material across all four options: two new slides, two modified slides.</p>
+</section>
+
+<section>
+  <h2>Beyond one program: the same process, three swaps</h2>
+  <p class="sub">The six moves do not change across contexts. Three parameters do. Swap these and the playbook retrofits a CompTIA course, compliance training, or vendor training the same way it retrofits a STEM lesson.</p>
+  <div class="evals">
+    <div class="eval"><b>The AI assistant</b><p>A youth program uses its approved coach tool. A certification course uses the student's chat assistant. A company uses whatever its policy has approved. In corporate settings this swap is a compliance decision, not a preference.</p></div>
+    <div class="eval"><b>The assessment target</b><p>Verification maps to whatever instrument already grades the course: skill rubrics in a STEM program, exam objectives in a CompTIA course, policy and scenario checks in compliance training. No new assessment system, ever.</p></div>
+    <div class="eval"><b>What rule 3 protects</b><p>Student privacy in a youth program. Company and client data in corporate training, where pasting the wrong thing into an AI tool can itself be a reportable incident. In those versions, this rule moves from ground rule to lesson content.</p></div>
+  </div>
+  <p class="why">One real adaptation: training with no hands-on project (much compliance training) shifts the verification target from "check the AI against your tool" to "check the AI against the policy." Same move, different reference document.</p>
+</section>
+
+<section>
+  <h2>When the AI acts: two added rules for agents</h2>
+  <p class="sub">Generative AI answers questions. An agent takes actions: it runs the scan, files the ticket, executes the steps. The six moves still apply, and agent touchpoints add two rules.</p>
+  <div class="evals">
+    <div class="eval"><b>Scope before action</b><p>The agent gets written boundaries before it acts: what it may touch, what it may never touch. Security students already learn this as Rules of Engagement. An agent gets the same contract a penetration tester does.</p></div>
+    <div class="eval"><b>Review the actions, not just the answer</b><p>With generative AI, the learner verifies the output. With an agent, the learner reviews the action log: every step it took, and whether each one was allowed and correct. A human checkpoint sits before any action that changes something.</p></div>
+  </div>
+  <p class="why">Sequence for introducing agents: first generative touchpoints (this playbook), then watching an agent work and auditing its log, then directing an agent inside boundaries the learner wrote. Advanced cybersecurity students reach step three inside the existing curriculum, where the defensive automation project already requires a human-in-the-loop checkpoint.</p>
+</section>
+
+<section>
+  <h2>Evaluate along the way</h2>
+  <p class="sub">No new instruments. All four measures come from systems already running.</p>
+  <div class="evals">
+    <div class="eval"><b>Process &amp; Independence</b><p>On the FK Assessment Form: does this bucket hold or drop on the AI-touched project compared to the student's previous project? A drop means the AI did the thinking.</p></div>
+    <div class="eval"><b>Disclosure rate</b><p>Share of submissions that include the one-line AI disclosure. This is the honesty habit, measured.</p></div>
+    <div class="eval"><b>The defense question</b><p>The instructor asks each student to explain one AI-assisted part without the AI. Pass rate is the independence metric.</p></div>
+    <div class="eval"><b>Errors caught</b><p>Count of times a student correctly overruled the AI. This is judgment, measured, and it is the number that proves the approach works.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div>Worked example source: Cyber's Future, Session 2: Ethics and Core IT and Security Principles.</div>
+  <div>Future Kings STEM Academy</div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function select(tab){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t); });
+    t.addEventListener('keydown', function(e){
+      var j = null;
+      if(e.key === 'ArrowRight') j = (i + 1) % tabs.length;
+      if(e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      if(j !== null){ tabs[j].focus(); select(tabs[j]); e.preventDefault(); }
+    });
+  });
+})();
+</script>
