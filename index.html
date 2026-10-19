@@ -37,8 +37,9 @@ h1,h2,h3{font-family:Archivo,sans-serif;text-wrap:balance}
 header.top{padding-block:44px 10px;display:flex;flex-direction:column;gap:10px}
 h1{font-size:clamp(30px,5vw,44px);font-weight:800;color:var(--ink);margin:0;line-height:1.05}
 .lede{font-size:17px;color:var(--muted);max-width:62ch;text-wrap:pretty;margin:0}
-section{margin-top:40px}
-h2{font-size:22px;font-weight:700;margin:0 0 4px 0}
+section{margin-top:48px}
+h2{font-size:clamp(22px,2.8vw,27px);font-weight:800;margin:0 0 4px 0}
+section>h2::before{content:"";display:block;width:34px;height:4px;border-radius:3px;background:var(--gold);margin-bottom:12px}
 .sub{color:var(--muted);font-size:14.5px;margin:0 0 16px 0;max-width:68ch}
 
 /* rules strip */
@@ -59,6 +60,19 @@ h2{font-size:22px;font-weight:700;margin:0 0 4px 0}
 .tab{font-family:Archivo,sans-serif;font-weight:600;font-size:13.5px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:11px 16px;min-height:44px;display:inline-flex;align-items:center;cursor:pointer}
 .tab[aria-selected="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
 .tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.ptab{font-family:Archivo,sans-serif;font-weight:600;font-size:13.5px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:11px 16px;min-height:44px;display:inline-flex;align-items:center;cursor:pointer}
+.ptab[aria-selected="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+.ptab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* collapsible cert */
+.certwrap{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.certwrap>summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;gap:12px;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(19px,2.6vw,24px);color:var(--ink);text-wrap:balance}
+.certwrap>summary::-webkit-details-marker{display:none}
+.certwrap>summary::before{content:"\25B8";color:var(--gold-deep);font-size:16px;flex:none;transition:transform .15s}
+.certwrap[open]>summary::before{transform:rotate(90deg)}
+.certwrap>summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.certbody{padding:0 20px 20px}
+.certbody .sub{margin-top:0}
+@media (prefers-reduced-motion:reduce){.certwrap>summary::before{transition:none}}
 
 /* before/after panel */
 .panel{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -171,56 +185,73 @@ h2{font-size:22px;font-weight:700;margin:0 0 4px 0}
 .stat p{margin:0;font-size:12.5px;color:var(--muted)}
 
 footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* PET: hero */
+.hero{margin-top:18px;padding:40px 34px 30px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(130% 150% at 12% -10%, rgba(201,162,39,.18), rgba(201,162,39,0) 52%), var(--surface);display:flex;flex-direction:column;gap:12px;animation:rise .5s ease both}
+.hero h1{font-size:clamp(34px,6.2vw,58px);font-weight:800;color:var(--ink);margin:0;line-height:1.03}
+.hero .promise{font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(19px,3vw,26px);line-height:1.22;color:var(--ink);margin:0;text-wrap:balance}
+.hero .promise .hl{color:var(--gold-deep)}
+.hero .lede{font-size:17px;color:var(--muted);max-width:60ch;margin:0}
+.hero .howto{margin-top:2px}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero{animation:none}}
+/* PET: the one idea */
+.spine{margin-top:16px;background:var(--navy);color:var(--navy-ink);border-radius:16px;padding:24px 26px}
+.spine .k{font-family:Archivo,sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.14em;color:var(--gold)}
+.spine .big{font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(21px,3.4vw,30px);line-height:1.15;margin:6px 0 0;color:#FFFFFF;text-wrap:balance}
+.spine p{font-size:14.5px;line-height:1.55;opacity:.93;margin:10px 0 0;max-width:76ch}
+/* certification examples */
+.cert{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:14px}
+.cert .certhead{font-family:Archivo,sans-serif;font-weight:700;font-size:15px;color:var(--ink);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.cert p{font-size:14px;line-height:1.5;margin:0 0 11px;max-width:82ch}
+.cert p:last-child{margin-bottom:0}
+.cert b{font-family:Archivo,sans-serif;font-size:12px;letter-spacing:.05em;color:var(--gold-deep);display:block;margin-bottom:2px}
+.cert .step-ai{border-left:3px solid var(--gold);padding-left:13px}
+.cert em{color:var(--ink)}
 </style>
 
 <div class="wrap">
 <a class="skip" href="#main">Skip to the playbook</a>
-<header class="top">
+<header class="hero">
   <div class="brandrow"><img class="logo" src="img/ypifany-logo.png" alt="Ypifany" width="44" height="44"><div class="eyebrow">AN YPIFANY PROCESS</div></div>
   <h1>AI Retrofit Playbook</h1>
-  <p class="lede">How to add AI to a course you already teach: slowly, responsibly, and at little to no cost. Nothing gets replaced. The existing slides and activities stay, and one AI step is added after them as an extension of the same task. The process works for any lesson in any training program, and it is shown below on a real deck.</p>
-  <p class="howto">How to read this page: start with the five rules and the six moves, click through the five slide examples to see each before and after, then try the agent demo yourself. A few minutes, start to finish.</p>
+  <p class="promise">Keep the course you already teach. Add one AI step, and build the thing a tool cannot give you: <span class="hl">judgment you can stand behind.</span></p>
+  <p class="lede">One useful AI step, added after an activity students already do. Nothing gets replaced. It costs little or nothing, and it is shown below on a real deck and on real certification questions.</p>
 </header>
 
 <main id="main">
 
-<section>
-  <h2>The ground rules</h2>
-  <p class="sub">Every retrofit follows these five rules. They are what makes the rollout slow and responsible instead of fast and sloppy.</p>
-  <div class="rules">
-    <div class="rule"><b>One touchpoint per lesson</b><span>AI enters one existing activity. It never becomes the lesson.</span></div>
-    <div class="rule"><b>AI after the first attempt</b><span>The student decodes, runs, or writes first. AI is the second opinion.</span></div>
-    <div class="rule"><b>Verification is graded</b><span>The student proves the AI right or wrong with the tool in front of him.</span></div>
-    <div class="rule"><b>Disclosure, no penalty</b><span>One line on the submission saying how AI helped. Never affects the grade.</span></div>
-    <div class="rule"><b>Little to no cost</b><span>Free tiers, open tools, or the AI the program already pays for.</span></div>
-  </div>
-</section>
+<div class="spine">
+  <div class="k">THE ONE IDEA</div>
+  <p class="big">Own what you put your name on.</p>
+  <p>Every rule here comes from one place. A student is answerable for what he shares, and for what an AI does in his name. So he works first, checks the AI, and decides what he will stand behind. It is also how the program keeps AI use ethical, safe, and secure: permission before action, privacy by default, and a person answerable at every step.</p>
+</div>
 
 <section>
-  <h2>The process, for any lesson</h2>
-  <p class="sub">Six moves. The lesson's learning objectives stay. One new objective is added. Assessment does not change.</p>
+  <h2>The six rules</h2>
+  <p class="sub">Six moves, in order, starting with the lesson you already have. The lesson's objectives stay, one new objective is added, and the course is never replaced. The rules keep the impact high without adding much cost.</p>
   <div class="steps">
     <div class="step"><div class="n">1</div><div><b>Pick one existing activity.</b><p>Choose the activity where a working professional would already be using AI. Do not write a new activity.</p></div></div>
     <div class="step"><div class="n">2</div><div><b>Choose the touchpoint type.</b><p>Before (AI as a coach to get unstuck), During (AI reads a tool's output, or AI is the tool the student works with), or After (AI reviews the student's finished work). One per lesson.</p></div></div>
     <div class="step"><div class="n">3</div><div><b>Keep the first attempt human.</b><p>The AI step always comes after the student's own attempt. If AI would erase the struggle the activity exists for, move the touchpoint later.</p></div></div>
-    <div class="step"><div class="n">4</div><div><b>Make verification the submission.</b><p>Whatever the AI said, the student's deliverable is proof it was right or wrong. This maps onto whatever already grades the course — in the worked example, the Process and Independence bucket on the FK Assessment — so grading does not change.</p></div></div>
+    <div class="step"><div class="n">4</div><div><b>Make the check the submission.</b><p>The student's deliverable is his check of what the AI said: where it holds, where it fails, and what he will stand behind. This maps onto whatever already grades the course, such as the Process and Independence bucket on the FK Assessment. If you add a new criterion, name it up front.</p></div></div>
     <div class="step"><div class="n">5</div><div><b>Add one learning objective.</b><p>Write it in standard form, for example: "Students will verify AI-generated output using an independent tool." The lesson's existing objectives stay as they are.</p></div></div>
-    <div class="step"><div class="n">6</div><div><b>Add the disclosure line.</b><p>The submission includes one sentence on how AI helped. Disclosure is the habit being built; it never affects the grade.</p></div></div>
+    <div class="step"><div class="n">6</div><div><b>Add the disclosure line.</b><p>The submission includes one sentence on how AI helped. Disclosure is the habit being built.</p></div></div>
   </div>
 </section>
 
 <section>
   <h2>Worked example: one real deck, before and after</h2>
-  <p class="sub">The deck: <strong>"Information Technology, Networking, and Security Fundamentals: Session 2 — Ethics &amp; Core IT and Security Principles,"</strong> from the Cyber's Future program at Future Kings. Seven places this one deck could take an AI touchpoint. An instructor picks <strong>one</strong> per session, not all seven. Click through each option: the left card is the existing slide, which stays exactly as it is; the right card is the new slide added after it, extending the same task.</p>
+  <p class="sub">The deck: <strong>"Information Technology, Networking, and Security Fundamentals: Session 2 — Ethics &amp; Core IT and Security Principles,"</strong> from the Cyber's Future program at Future Kings. Click through each option: the left card is the existing slide, which stays exactly as it is; the right card is the new slide added after it, extending the same task.</p>
 
   <div class="tabs" role="tablist" aria-label="Retrofit options">
-    <button type="button" class="tab" role="tab" id="tab-a" aria-selected="true" aria-controls="pane-a">1 · The energizer</button>
-    <button type="button" class="tab" role="tab" id="tab-b" aria-selected="false" aria-controls="pane-b" tabindex="-1">2 · The ethics block</button>
-    <button type="button" class="tab" role="tab" id="tab-e" aria-selected="false" aria-controls="pane-e" tabindex="-1">3 · Get unstuck</button>
-    <button type="button" class="tab" role="tab" id="tab-c" aria-selected="false" aria-controls="pane-c" tabindex="-1">4 · Processes activity</button>
-    <button type="button" class="tab" role="tab" id="tab-d" aria-selected="false" aria-controls="pane-d" tabindex="-1">5 · Live attacks</button>
-    <button type="button" class="tab" role="tab" id="tab-f" aria-selected="false" aria-controls="pane-f" tabindex="-1">6 · Who gets left out</button>
-    <button type="button" class="tab" role="tab" id="tab-g" aria-selected="false" aria-controls="pane-g" tabindex="-1">7 · Confidence check</button>
+    <button type="button" class="tab" role="tab" id="tab-a" aria-selected="true" aria-controls="pane-a">1 · Verify with a second tool</button>
+    <button type="button" class="tab" role="tab" id="tab-b" aria-selected="false" aria-controls="pane-b" tabindex="-1">2 · Permission applies to AI</button>
+    <button type="button" class="tab" role="tab" id="tab-e" aria-selected="false" aria-controls="pane-e" tabindex="-1">3 · Ask for a hint, not the answer</button>
+    <button type="button" class="tab" role="tab" id="tab-c" aria-selected="false" aria-controls="pane-c" tabindex="-1">4 · Test the claim by hand</button>
+    <button type="button" class="tab" role="tab" id="tab-d" aria-selected="false" aria-controls="pane-d" tabindex="-1">5 · Fact-check against the lesson</button>
+    <button type="button" class="tab" role="tab" id="tab-f" aria-selected="false" aria-controls="pane-f" tabindex="-1">6 · Catch what it leaves out</button>
+    <button type="button" class="tab" role="tab" id="tab-g" aria-selected="false" aria-controls="pane-g" tabindex="-1">7 · Explain it without the AI</button>
   </div>
 
   <div id="pane-a" role="tabpanel" aria-labelledby="tab-a" tabindex="0">
@@ -360,6 +391,90 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 </section>
 
 <section>
+  <h2>When the AI acts: two added rules for agents</h2>
+  <p class="sub">Same one idea, higher stakes. With generative AI you are answerable for what you share. An agent acts: it takes steps on its own, so now you are answerable for what it does in your name. That is why an agent gets two more rules. Don't read about them, try them. Picture your home office. You gave an agent this job: <strong>"Sort this week's receipts and draft a reply to my landlord about the rent."</strong> Now run it, and read what it does.</p>
+  <div class="demo">
+    <div class="roe">
+      <b>RULE 6 · SCOPE BEFORE ACTION</b>
+      <p class="roenote" style="margin:0 0 8px 0">Before the agent starts, the learner writes its boundaries:</p>
+      <ul>
+        <li>May look at: <strong>your inbox and Receipts folder only</strong></li>
+        <li>May sort receipts and draft a reply</li>
+        <li class="no">May not open saved files outside the inbox</li>
+        <li class="no">May not send anything until you say yes</li>
+      </ul>
+      <p class="roenote">This is the same contract a security student writes before a test, called Rules of Engagement. You are writing one for a chore at home: here is what you may touch, and nothing goes out without me.</p>
+    </div>
+    <div class="logwrap">
+      <div class="samplelab" style="margin-bottom:2px">PREPARED EXAMPLE · nothing real runs, nothing is sent</div>
+      <button type="button" class="runbtn" id="runAgent">&#9654; Run the agent</button>
+      <div class="log" id="agentLog" aria-live="polite"><span class="placeholder">Every step the agent takes will show up here, in order. This is its action log.</span></div>
+      <div class="report" id="agentReport">
+        <b>THE REPLY IT WANTS TO SEND</b>
+        <p>"Done. Sorted 6 receipts into your Receipts folder and drafted a friendly reply to your landlord confirming this month's rent is paid. Ready to send."</p>
+      </div>
+      <div class="checkpoint" id="checkpoint" tabindex="-1">
+        <span><strong>Rule 7 · Human checkpoint.</strong> The agent cannot send without you. You have its draft above and its four steps in the log. Do you let the reply go out?</span>
+        <button type="button" class="cbtn stop" data-v="stop">Stop it</button>
+        <button type="button" class="cbtn" data-v="approve">Approve</button>
+      </div>
+      <div class="verdict" id="verdict" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+  <p class="why">Rollout order: first generative touchpoints (this playbook), then auditing an agent's log the way you just did, then directing an agent inside boundaries the learner wrote. Advanced cybersecurity students reach that third step inside the existing curriculum, where the defensive automation project already requires a human-in-the-loop checkpoint.</p>
+
+  <h3 style="font-size:17px;margin:28px 0 8px 0">The same agent step across the four programs</h3>
+  <p class="sub">An instructor picks one. In every case the student writes the scope, the agent runs in a walled-off place the program already controls, and the student audits the log before anything counts. Cyber is from the real Session 2 deck; the other three are illustrative.</p>
+  <div class="ptabwrap" id="ptabs">
+    <div class="tabs" role="tablist" aria-label="Agent example by program">
+      <button type="button" class="ptab" role="tab" id="pt-cyber" aria-selected="true" aria-controls="pp-cyber">Cybersecurity</button>
+      <button type="button" class="ptab" role="tab" id="pt-bio" aria-selected="false" aria-controls="pp-bio" tabindex="-1">Biomedical</button>
+      <button type="button" class="ptab" role="tab" id="pt-drone" aria-selected="false" aria-controls="pp-drone" tabindex="-1">Drone</button>
+      <button type="button" class="ptab" role="tab" id="pt-game" aria-selected="false" aria-controls="pp-game" tabindex="-1">Game design</button>
+    </div>
+    <div id="pp-cyber" role="tabpanel" aria-labelledby="pt-cyber" tabindex="0">
+      <div class="panel">
+        <div class="col"><div class="collabel before">EXISTING · SLIDE 41, UNCHANGED</div><img class="shot" src="img/before-41.png" alt="Existing slide 41: Think Like a Hacker. Students crack an account with a simple password, by hand."><p class="cap">From the real deck. The student cracks one password by hand first, which is what lets him judge the agent later.</p></div>
+        <div class="col"><div class="collabel after">PROPOSED · NEW SLIDE 41B</div><img class="shot new" src="img/after-41b.png" alt="Proposed slide 41B: Point an Agent at the Lab. The student writes Rules of Engagement, the agent checks the practice lab, and he audits the log before anything is sent."><p class="cap">He writes the Rules of Engagement, the agent runs, and he audits the log before anything is sent.</p></div>
+      </div>
+      <div class="meta" style="margin-top:12px"><span class="chip gold">Runs in a walled-off virtual machine, the Kali lab</span><span class="chip">Scope: the practice lab only</span></div>
+    </div>
+    <div id="pp-bio" role="tabpanel" aria-labelledby="pt-bio" tabindex="0" hidden>
+      <div class="panel">
+        <div class="col"><div class="collabel before">EXISTING ACTIVITY</div><img class="shot" src="img/before-bio.png" alt="Biomedical existing activity: Screen the Sample Readings. Students run the assay, record readings by hand, and flag what looks off."><p class="cap">The student screens a few readings by hand first.</p></div>
+        <div class="col"><div class="collabel after">PROPOSED · NEW</div><img class="shot new" src="img/after-bio.png" alt="Proposed biomedical slide: Let an Agent Screen the Batch. The student scopes an agent to a practice dataset, reads which readings it flagged and why, and signs the summary after keeping the flags that hold."><p class="cap">He scopes an agent to a practice dataset, reads which readings it flagged, and signs the summary himself.</p></div>
+      </div>
+      <div class="meta" style="margin-top:12px"><span class="chip gold">Runs on the lab computer</span><span class="chip">Scope: practice data only, no patient data</span></div>
+    </div>
+    <div id="pp-drone" role="tabpanel" aria-labelledby="pt-drone" tabindex="0" hidden>
+      <div class="panel">
+        <div class="col"><div class="collabel before">EXISTING ACTIVITY</div><img class="shot" src="img/before-drone.png" alt="Drone existing activity: Map the Practice Flight. Students fly the route, capture images, and check overlap by hand."><p class="cap">The student flies the route and checks a few images by hand.</p></div>
+        <div class="col"><div class="collabel after">PROPOSED · NEW</div><img class="shot new" src="img/after-drone.png" alt="Proposed drone slide: Let an Agent Process the Images. The student scopes an agent to this flight's image folder offline, reads which images it used or dropped, and approves the map only if the evidence holds."><p class="cap">He scopes an agent to this flight's images, reads its log, and approves the map only if the evidence holds.</p></div>
+      </div>
+      <div class="meta" style="margin-top:12px"><span class="chip gold">Runs on the ground-station laptop</span><span class="chip">Scope: this flight's images only, offline</span></div>
+    </div>
+    <div id="pp-game" role="tabpanel" aria-labelledby="pt-game" tabindex="0" hidden>
+      <div class="panel">
+        <div class="col"><div class="collabel before">EXISTING ACTIVITY</div><img class="shot" src="img/before-game.png" alt="Game design existing activity: Playtest Your Level. Students play their own level, note where it breaks, and write one fix."><p class="cap">The student plays his own level first and notes where it breaks.</p></div>
+        <div class="col"><div class="collabel after">PROPOSED · NEW</div><img class="shot new" src="img/after-game.png" alt="Proposed game design slide: Let an Agent Playtest It. The student scopes a playtest agent to his own build, reads where it got stuck or what it exploited, and keeps only the findings that match what he saw."><p class="cap">He scopes a playtest agent to his own build, reads its log, and keeps only the findings that match what he saw.</p></div>
+      </div>
+      <div class="meta" style="margin-top:12px"><span class="chip gold">Runs in the engine's test mode</span><span class="chip">Scope: his own build only</span></div>
+    </div>
+  </div>
+
+  <div class="realbox">
+    <span class="rtag">ABOUT REAL AGENT TOOLS</span>
+    <h3>Agents are real. Student access is not a given. Check first.</h3>
+    <p>Agents are here. Gemini, for example, now has a Task mode that does jobs on its own across a person's Google apps and can run on a schedule. But the access is gated. As of its current documentation, Task needs an adult account (18 or older), a paid Gemini plan, and it excludes work and school accounts. For a grades 6 to 12 program, that means most students cannot turn it on, and no one should try it on a school account. Provider rules like these change often, so verify them before you rely on any agent feature.</p>
+    <div class="rrules">
+      <div class="rrule"><b>RULE 6 · SET THE LIMITS FIRST</b>Before an agent runs, you name what it may touch and who approves a change. You own those limits; the AI does not set them, and a prompt that says "do not share" is not the same as switching sharing off.</div>
+      <div class="rrule"><b>RULE 7 · REVIEW WHAT IT DID</b>Read the action log, check the real draft and recipient, and sign off before anything leaves the room. You are answerable for what it did in your name. A summary of what it says it did is not the record.</div>
+    </div>
+    <p class="rnote">The core of this playbook needs none of that. Students practice with ordinary AI and the prepared simulation above. No student needs to buy an agent plan or connect a real inbox to learn this.</p>
+  </div>
+</section>
+
+<section>
   <h2>The same process works in other training</h2>
   <p class="sub">The six moves and the ground rules never change, and the existing course is never replaced. Moving this process to a different kind of training changes only three things: which AI the learner uses, what the learner checks the AI against, and whose private information gets protected. Click a training type and watch those three change while everything else holds still.</p>
   <div class="pills" id="ctxPills" role="group" aria-label="Pick a training type">
@@ -384,74 +499,45 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 </section>
 
 <section>
-  <h2>When the AI acts: two added rules for agents</h2>
-  <p class="sub">Generative AI answers questions. An agent does work on its own: you give it a job, it takes the steps, and you see what it did afterward. That adds two rules. Don't read about them — try them. You gave an agent this job: <strong>"Check the practice lab's computers for weak spots and write me a report."</strong> Now run it, and read what it does.</p>
-  <div class="demo">
-    <div class="roe">
-      <b>RULE 6 · SCOPE BEFORE ACTION</b>
-      <p class="roenote" style="margin:0 0 8px 0">Before the agent starts, the learner writes its boundaries:</p>
-      <ul>
-        <li>May look at: <strong>the practice lab only</strong></li>
-        <li>May write up what it finds</li>
-        <li class="no">May not touch anything outside the lab</li>
-        <li class="no">May not send anything until a human says yes</li>
-      </ul>
-      <p class="roenote">Security students already know this contract: Rules of Engagement. An agent signs the same one a penetration tester does.</p>
-    </div>
-    <div class="logwrap">
-      <button type="button" class="runbtn" id="runAgent">&#9654; Run the agent</button>
-      <div class="log" id="agentLog" aria-live="polite"><span class="placeholder">Every step the agent takes will show up here, in order. This is its action log.</span></div>
-      <div class="report" id="agentReport">
-        <b>THE REPORT IT WANTS TO SEND</b>
-        <p>"Practice lab check complete. Found 3 weak spots: two old passwords and one unlocked shared folder. Recommend fixing before next session."</p>
-      </div>
-      <div class="checkpoint" id="checkpoint" tabindex="-1">
-        <span><strong>Rule 7 · Human checkpoint.</strong> The agent cannot send without you. You have its report above and its four steps in the log. Do you let the report go out?</span>
-        <button type="button" class="cbtn stop" data-v="stop">Stop it</button>
-        <button type="button" class="cbtn" data-v="approve">Approve</button>
-      </div>
-      <div class="verdict" id="verdict" role="status" aria-live="polite"></div>
-    </div>
-  </div>
-  <p class="why">Rollout order: first generative touchpoints (this playbook), then auditing an agent's log the way you just did, then directing an agent inside boundaries the learner wrote. Advanced cybersecurity students reach that third step inside the existing curriculum, where the defensive automation project already requires a human-in-the-loop checkpoint.</p>
+  <details class="certwrap">
+  <summary>For certification training: the job test the exam skips</summary>
+  <div class="certbody">
+  <p class="sub">A certificate proves you can pick the right answer on a test. The job asks something harder: can you keep your judgment when a confident tool hands you a wrong one? No exam item covers that, and it is exactly what the retrofit adds. Here are real exam-style questions with one AI step added. Adding AI will not help anyone pass a proctored exam, and we do not pretend it will. It builds the judgment the exam assumes and the employer actually pays for.</p>
 
-  <h3 style="font-size:17px;margin:28px 0 4px 0">In the same deck: where the agent slide goes</h3>
-  <p class="sub">Session 2 already has a lab where each student cracks one password by hand. That finished attempt is the hook. The agent slide goes right after it, and it leans on the ethical-hacking rule the deck taught a few slides earlier: permission first, report after.</p>
-  <div class="panel">
-    <div class="col">
-      <div class="collabel before">EXISTING · SLIDE 41, UNCHANGED</div>
-      <img class="shot" src="img/before-41.png" alt="Existing slide 41: Activity, Think Like a Hacker. In this practical scenario students crack an account with a simple password, by hand.">
-      <p class="cap">The student does the cracking himself first. Rule 2 again: the human attempt comes before the AI, and here it is what lets him judge the agent later.</p>
-    </div>
-    <div class="col">
-      <div class="collabel after">PROPOSED · NEW SLIDE 41B</div>
-      <img class="shot new" src="img/after-41b.png" alt="Proposed new slide 41B: Now Point an Agent at the Lab. Students write Rules of Engagement, let an agent check the whole practice lab, read its action log, and approve or stop its report.">
-      <p class="cap">Speaker note: the student writes the Rules of Engagement, the agent runs, and the student audits the log before anything is sent. This is the demo above, turned into one slide.</p>
-    </div>
+  <div class="cert">
+    <div class="certhead"><span class="chip gold">CySA+ · Objective 1.4</span> Threat intelligence and threat hunting</div>
+    <p><b>The exam item, unchanged</b>Three vendor reports link a file hash to a ransomware group. All three copied the attribution from the same anonymous forum post. The file is confirmed malicious, but nothing identifies the operator. The most defensible assessment: <em>maliciousness is supported, but attribution stays uncertain because the reports are not independent.</em></p>
+    <p class="step-ai"><b>The AI step, new</b>Ask any AI "who is behind this hash?" It will name the group with confidence, blending the same recycled sources. The student makes the same call on the AI's answer that the exam wants on the vendor reports: supported where there is independent evidence, uncertain where there is not.</p>
+    <p><b>What it builds</b>The habit of separating "confident" from "corroborated." The AI commits the exact error the objective tests, so the student practices the real skill on a live example.</p>
   </div>
-  <p class="why">One new slide, same as the AI retrofits. It is the third stage of the rollout, so it belongs in the Advanced password-cracking lab, not a beginner session.</p>
 
-  <div class="realbox">
-    <span class="rtag">THIS IS NOT HYPOTHETICAL</span>
-    <h3>Your students already have an agent: Gemini's Task mode</h3>
-    <p>The lab agent above runs on a walled-off Kali machine. But Gemini now has an agent anyone can turn on, and it lives in Google's cloud and acts inside your own Google apps. Its Task mode does jobs on its own: it reads and sorts your Gmail, changes your calendar, builds files, and even opens websites to shop or book things. It can run on a schedule, like every morning. That is a real agent, and the two rules fit it word for word. Google built both of them right into the controls.</p>
-    <div class="rrules">
-      <div class="rrule"><b>RULE 6 · SCOPE BEFORE ACTION</b>Before it runs, you pick what it can reach. Google's own warning: never put passwords or private details into the task. That is scope, in their words.</div>
-      <div class="rrule"><b>RULE 7 · REVIEW THE ACTIONS</b>Task shows you every step it took and every file it opened, and lets you stop it. It also asks before it sends, buys, or changes anything. That is the human checkpoint, built in.</div>
-    </div>
-    <p class="rnote">One honest limit: Task needs a paid Gemini plan and a personal Google account, so not every student will have it. But the moment one does turn it on, he is supervising an agent, and this playbook is how he does it safely.</p>
+  <div class="cert">
+    <div class="certhead"><span class="chip gold">CySA+ · Objective 3.3</span> Incident response and evidence integrity</div>
+    <p><b>The exam item, unchanged</b>An analyst rebuilds an incident from endpoint and firewall logs. The endpoint clock ran seven minutes fast; the originals are already collected and hashed. The correct approach: <em>normalize timestamps in a separate analysis copy, document the adjustment, and keep the originals untouched.</em></p>
+    <p class="step-ai"><b>The AI step, new</b>Ask an AI to "build the timeline from these logs." It will happily adjust timestamps, and will sometimes imply editing the originals. The student checks the AI's approach against chain of custody: would this survive in a report someone has to defend? He keeps what preserves the evidence and rejects what breaks it.</p>
+    <p><b>What it builds</b>The instinct to protect the original record even when a tool offers a faster shortcut. The exam tests the rule; the job tests whether you hold the line under a confident suggestion.</p>
   </div>
+
+  <div class="cert">
+    <div class="certhead"><span class="chip gold">CGRC / RMF</span> Control assessment and documentation</div>
+    <p><b>The exam item, unchanged</b>The exam tests whether you know what a control requires and how the RMF steps fit together. It does not test how the control narrative gets written.</p>
+    <p class="step-ai"><b>The AI step, new</b>On the job, people draft control narratives, SSP language, and POA&amp;M entries with AI. It produces fluent text that often does not match the real system. The learner drafts with AI, then checks each claim against the actual configuration and the control's intent, and marks what is true, what is boilerplate, and what is missing.</p>
+    <p><b>What it builds</b>The assessor's core skill: telling "sounds compliant" from "is compliant." The exam never tests it. The job is almost nothing but it.</p>
+  </div>
+
+  <p class="why">The pattern is the same every time. Take the question you already study. Add the AI where a working professional would reach for it. Then make the student answerable for the call. The certificate gets the interview; this gets the job.</p>
+  </div>
+  </details>
 </section>
 
 <section>
   <h2>Evaluate along the way</h2>
-  <p class="sub">No new instruments: all four measures come from systems already running. Here is what one class of 14 could look like after one cycle.</p>
+  <p class="sub">Three measures, each one documented in training and human-AI research, not invented here. Two come straight from the FK Assessment the program already runs; the first is read off the one-line AI check each lesson already asks for. Here is what one class of 14 could look like after one cycle.</p>
   <div class="samplelab">SAMPLE VIEW · ILLUSTRATIVE NUMBERS, NOT REAL DATA</div>
   <div class="board" id="board">
-    <div class="stat"><b>Process &amp; Independence</b><div class="big"><span data-count="11">0</span><small> of 14 held or rose</small></div><div class="meter"><i data-w="79"></i></div><p>On the FK Assessment Form: did this bucket hold on the AI-touched project? A drop means the AI did the thinking.</p></div>
-    <div class="stat"><b>Disclosure rate</b><div class="big"><span data-count="86">0</span><small>% of submissions</small></div><div class="meter"><i data-w="86"></i></div><p>Share of submissions with the one-line AI disclosure. The honesty habit, measured.</p></div>
-    <div class="stat"><b>The defense question</b><div class="big"><span data-count="12">0</span><small> of 14 passed</small></div><div class="meter"><i data-w="86"></i></div><p>Each student explains one AI-assisted part without the AI. Pass rate is the independence metric.</p></div>
-    <div class="stat"><b>Errors caught</b><div class="big"><span data-count="9">0</span><small> AI mistakes overruled</small></div><div class="meter"><i data-w="64"></i></div><p>Times a student correctly overruled the AI. This is the number that proves the approach works.</p></div>
+    <div class="stat"><b>Appropriate reliance</b><div class="big"><span data-count="10">0</span><small> of 14 calibrated</small></div><div class="meter"><i data-w="71"></i></div><p>Across AI-assisted work, did the student keep the AI when it was right and overrule it when it was wrong? Both sides count: keeping a wrong answer is over-reliance, throwing out a right one is under-reliance. This is the documented measure of AI judgment, not just catching mistakes.</p></div>
+    <div class="stat"><b>Unaided transfer</b><div class="big"><span data-count="11">0</span><small> of 14 held or rose</small></div><div class="meter"><i data-w="79"></i></div><p>On the FK Assessment, can the student still do or explain the task with the AI closed? This is learning that transfers to the job, which is the level training is finally judged on, not help in the moment.</p></div>
+    <div class="stat"><b>Proficiency movement</b><div class="big"><span data-count="5">0</span><small> of 14 moved up a level</small></div><div class="meter"><i data-w="36"></i></div><p>Students who moved toward the next SFIA proficiency level this cycle. The workforce outcome families and funders care about.</p></div>
   </div>
 
   <div class="next">
@@ -462,10 +548,12 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 
 <section>
   <h2>References</h2>
-  <p class="sub">The process and the two upgrades draw on this work.</p>
+  <p class="sub">The process and its checks draw on this work.</p>
   <ul class="refs">
     <li>Melbourne CSHE. <a href="https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-assessment/designing-assessment-tasks-that-are-less-vulnerable-to-ai">Designing assessment tasks that are less vulnerable to AI</a>. Backs process-over-product grading, evaluative judgement, and the oral defense question.</li>
     <li>UNESCO. <a href="https://gcedclearinghouse.org/en/node/146445">AI Competency Framework for Students</a> (2024). Backs the bias-and-gaps check and the human-centred, ethics-first stance.</li>
+    <li>Measuring and mitigating over-reliance on AI. <a href="https://arxiv.org/abs/2509.08010">arXiv, 2025</a>; and <a href="https://arxiv.org/abs/2401.15356">A decision-theoretic framework for measuring AI reliance</a> (arXiv, 2024). Defines appropriate reliance as a two-sided outcome, accepting correct AI output and rejecting incorrect output, so good judgment is more than catching mistakes.</li>
+    <li>Kirkpatrick's four levels of training evaluation. <a href="https://www.kirkpatrickpartners.com/the-kirkpatrick-model/">Kirkpatrick Partners</a>. Backs measuring Behavior (transfer to the job) and Results, not only in-session learning, which is why unaided transfer and proficiency movement are the headline metrics.</li>
     <li>Outsourcing cognition: the psychological costs of AI-era convenience. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12714973">U.S. National Library of Medicine (PMC)</a>. Backs "AI after the first attempt" and the confidence self-check against the illusion of competence.</li>
     <li>From chalkboards to chatbots: the SELAR framework for AI in the curriculum. <a href="https://arxiv.org/pdf/2411.00783">arXiv</a>. A structured way to embed AI in existing lessons.</li>
     <li>Queen Mary Academy. <a href="https://qmul.ac.uk/queenmaryacademy/educators/innovation-and-scholarship/innovative-pedagogies/centre-for-excellence-in-ai-in-education/blog/items/integrating-ai-in-curriculum-simplifying-complexity-for-broader-adoption.html">Integrating AI in Curriculum: Simplifying Complexity for Broader Adoption</a>. Why simple, low-cost integrations get adopted.</li>
@@ -483,6 +571,30 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 <script>
 (function(){
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function select(tab){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.setAttribute('tabindex', on ? '0' : '-1');
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t); });
+    t.addEventListener('keydown', function(e){
+      var j = null;
+      if(e.key === 'ArrowRight') j = (i + 1) % tabs.length;
+      if(e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      if(j !== null){ tabs[j].focus(); select(tabs[j]); e.preventDefault(); }
+    });
+  });
+})();
+
+/* ---- Agent program tabs (scoped to #ptabs) ---- */
+(function(){
+  var root = document.getElementById('ptabs');
+  if(!root) return;
+  var tabs = Array.prototype.slice.call(root.querySelectorAll('.ptab'));
   function select(tab){
     tabs.forEach(function(t){
       var on = t === tab;
@@ -569,10 +681,10 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   var verdict = document.getElementById('verdict');
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var LINES = [
-    { cls: 'ok',   text: 'Step 1 ✓ Checked the practice lab’s computers. Found 3 weak spots. (allowed)' },
-    { cls: 'ok',   text: 'Step 2 ✓ Wrote up what it found. (allowed)' },
-    { cls: 'bad',  text: 'Step 3 ✗ Started checking the company’s EMAIL system. Nobody gave it permission to go there. (NOT allowed)' },
-    { cls: 'wait', text: 'Step 4 ⏸ Wants to send the report out. Stopped and asked a human first…' }
+    { cls: '',     text: 'Step 1 · Opened the inbox and sorted 6 receipts into the Receipts folder.' },
+    { cls: '',     text: 'Step 2 · Drafted a reply to the landlord about this month’s rent.' },
+    { cls: '',     text: 'Step 3 · Opened a saved bank statement and added your full account number to the draft.' },
+    { cls: 'wait', text: 'Step 4 · Reply ready. Holding for your approval before sending.' }
   ];
   var timers = [];
   function reset(){
@@ -609,10 +721,10 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       checkpoint.classList.remove('show');
       if(b.getAttribute('data-v') === 'stop'){
         verdict.className = 'verdict good show';
-        verdict.innerHTML = '<strong>Right call.</strong> Read the report again: it never mentions the email system. The report looked clean — only the action log told the truth about step 3. That is the whole lesson: with an agent, you review what it <em>did</em>, not just what it wrote, and a human sits in front of anything that leaves the room.';
+        verdict.innerHTML = '<strong>Right call.</strong> Read the draft again: it never mentions the bank statement. The reply looked clean — only the action log told the truth about step 3, where the agent put your full account number into it. That is the whole lesson: with an agent, you review what it <em>did</em>, not just what it wrote, and a human sits in front of anything that leaves the room.';
       } else {
         verdict.className = 'verdict warn show';
-        verdict.innerHTML = '<strong>You judged the report, not the agent.</strong> The report reads fine — that is exactly the trap, because it says nothing about step 3, where the agent went into the company’s email system without permission. Only the action log showed what really happened. Run it again and read the log before you click.';
+        verdict.innerHTML = '<strong>You judged the reply, not the agent.</strong> The draft reads fine — that is exactly the trap, because it says nothing about step 3, where the agent pulled your full bank account number into it. Only the action log showed what really happened. Run it again and read the log before you click.';
       }
       btn.disabled = false;
       btn.innerHTML = '↺ Run it again';
