@@ -570,6 +570,11 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   <div class="certbody">
   <p class="sub">You already know the two halves of this business. Pass rates get you noticed. Experience gets you remembered and asked back. Here is what changed under both. AI now passes the exam your students are cramming for, and hiring managers have started ranking proven judgment above the certificate itself (ISC2 and SANS, in the references). The recall your flashcards drill is the part AI now does for free. The experience that makes your bootcamp worth paying for, and worth booking again, is the one thing AI cannot hand anyone: the judgment to take its answer, check it against the real system, and own the call. That is the layer this adds.</p>
 
+  <div class="next" style="border-left-color:var(--navy)">
+    <b>AI IS ALREADY IN THIS TRAINING</b>
+    <p>Students already use it to study. Custom tools tuned to the exam objectives, study plans, acronym lists, flashcards on demand. That is real, and it helps them pass. But using AI to study and practicing judgment with AI are two different skills. A tool that helps a student answer D is not the same as the judgment the job needs the moment AI is the one producing D. The retrofit adds the second skill, and this is what it looks like.</p>
+  </div>
+
   <div class="cert drill">
     <div class="certhead"><span class="chip gold">CySA+ · Objective 2.2</span> Interpreting vulnerability assessment results</div>
     <div class="jobhead">IN TRAINING NOW</div>
@@ -584,55 +589,34 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     <p class="trainingend">You see why D is right and the rest are wrong, and you move to the next question. That is where training stops.</p>
     <div class="jobtask">
       <div class="jobhead">AI ON THE JOB · WHERE THE LESSON PICKS UP</div>
-      <p>In the training course, D is the answer the student knows. On the job, AI is likely somewhere in the workflow already. Getting D right is good, but it is not enough. Same skill, but where it lands depends on the seat you are in.</p>
+      <p>In the training course, D is the answer the student knows, and AI hands it over in seconds. Getting D right is good. It is not the job. So at the end of the course, before the certificate, you add one edge task where the student stops answering and starts deciding.</p>
+      <div class="next" style="border-left-color:var(--gold)">
+        <b>THE CAPSTONE · ONE EDGE TASK FOR THE WHOLE COURSE</b>
+        <p>One incident, with AI already in every step. It ran the scan, built the timeline, and drafted the write-up. The student's job is not to redo that work. It is to move upstream, check what matters at each step, and produce the one thing a hiring manager can hold: a finding with their name on it. <span class="basis">You can also place one edge task per domain, or one per module, as you scale. One capstone is the lightest way to prove the model.</span></p>
+      </div>
       <div class="scenario">
-        <div class="scenlabel">Context · You build apps for a SaaS company</div>
-        <p>A release ships next week. The AI ran the authenticated scan and handed this back:</p>
+        <div class="scenlabel">Beat 1 · The scan</div>
+        <p>AI ran the authenticated scan on the customer portal and handed this back:</p>
         <div class="terminal" id="dastTerm" role="img" aria-label="Dynamic scan log: the session expires right after login, only 1 of 24 signed-in pages are reached, and the scan still reports zero vulnerabilities."><div class="tbar"><i class="d1"></i><i class="d2"></i><i class="d3"></i><span>dynamic scan · portal.local</span></div><div class="tbody" id="dastBody"></div></div>
-        <p style="margin-top:12px">Clean, 0 found. But the session dropped after login, so it reached 1 of 24 signed-in pages and never tested the code the finding is about. The customer's security team will read this report. The date is set.</p>
-        <p class="judgq">What do you do with "0 found," and what do you tell the customer about what was actually tested?</p>
+        <p style="margin-top:12px">Clean, 0 found. But the session dropped after login, so it reached 1 of 24 signed-in pages and never tested the code the finding is about.</p>
+        <p class="judgq">Does "0 found" go in the report as written, and what does the student set before the scan runs again?</p>
       </div>
-      <details class="scenario">
-        <summary>Context · You help a nonprofit decide whether to buy an app</summary>
-        <p>A vendor hands your team a scan report that says 0 vulnerabilities. You did not run it. You cannot re-run it. The board wants to move.</p>
-        <p class="judgq">What do you need to know about how that scan was run before you let the number decide the purchase?</p>
-      </details>
-      <p class="trainingend" style="margin-top:12px">No answer key. The seat changes the move. What does not change is that the person who signs it owns what the scan did and did not cover.</p>
-    </div>
-  </div>
-
-  <div class="cert drill" style="margin-top:16px">
-    <div class="certhead"><span class="chip gold">CySA+ · Objective 3.3</span> Incident response and evidence integrity</div>
-    <div class="jobhead">IN TRAINING NOW</div>
-    <p class="qtext">An analyst is reconstructing an incident from endpoint and firewall logs. The endpoint's clock was seven minutes fast throughout; the firewall's clock was accurate. The original logs are already collected and hashed. Which approach best supports an accurate timeline while preserving evidence integrity?</p>
-    <div class="choices">
-      <div class="choice correct"><span><strong>A. Normalize timestamps in a separate analysis copy, document the adjustment, and retain the originals.</strong></span><span class="ctag">&#10003; correct</span></div>
-      <div class="choice">B. Correct timestamps in the original evidence files and calculate replacement hashes.</div>
-      <div class="choice">C. Use the SIEM's receipt times to order events instead of the devices' timestamps.</div>
-      <div class="choice">D. Synchronize the endpoint's clock and export its historical logs again.</div>
-    </div>
-    <div class="report show"><b>WHAT THE AI DOES WITH IT</b><p>"Correct, A. Normalizing in a separate copy fixes the seven-minute skew for analysis while the hashed originals stay untouched, so the evidence holds. B is wrong: editing the originals and re-hashing breaks the chain of custody. C is wrong: SIEM receipt times are not the device times the incident actually ran on. D is wrong: re-syncing and re-exporting cannot recover the historical timestamps and risks altering them."</p></div>
-    <p class="trainingend">You see why A is right and the rest are wrong, and you move to the next question. That is where training stops.</p>
-    <div class="jobtask">
-      <div class="jobhead">AI ON THE JOB · WHERE THE LESSON PICKS UP</div>
-      <p>In the training course, A is the answer the student knows. On the job, AI is likely somewhere in the workflow already. Getting A right is good, but it is not enough. Same skill, but what it takes to protect the evidence depends on the seat you are in.</p>
       <div class="scenario">
-        <div class="scenlabel">Context · You are the analyst on an active case</div>
-        <p>You asked the AI to line the events up. The endpoint clock ran seven minutes ahead of the firewall, and it corrected the skew:</p>
+        <div class="scenlabel">Beat 2 · The timeline</div>
+        <p>AI rebuilt the timeline from endpoint and firewall logs. The endpoint clock ran seven minutes ahead, and it corrected the skew:</p>
         <div class="clocks" role="img" aria-label="Two clocks side by side: the endpoint clock reads seven minutes ahead of the firewall clock."><svg viewBox="0 0 320 124"><circle cx="80" cy="52" r="38" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"/><line x1="80" y1="14" x2="80" y2="20" stroke="currentColor" stroke-width="2.5"/><line x1="80" y1="52" x2="63" y2="41" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="80" y1="52" x2="100" y2="30" stroke="var(--gold-deep)" stroke-width="2.5" stroke-linecap="round"/><circle cx="80" cy="52" r="3" fill="currentColor"/><circle cx="240" cy="52" r="38" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"/><line x1="240" y1="14" x2="240" y2="20" stroke="currentColor" stroke-width="2.5"/><line x1="240" y1="52" x2="223" y2="42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="240" y1="52" x2="240" y2="22" stroke="var(--gold-deep)" stroke-width="2.5" stroke-linecap="round"/><circle cx="240" cy="52" r="3" fill="currentColor"/><text x="80" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">ENDPOINT · +7 MIN</text><text x="240" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ok)">FIREWALL · CORRECT</text></svg></div>
-        <p style="margin-top:10px">The timeline looks right. It is going to a legal team, and the other side will ask how the evidence was handled.</p>
-        <p class="judgq">Before your name goes on it, how do you satisfy yourself the AI touched only a copy and left the hashed originals alone?</p>
+        <p style="margin-top:10px">The timeline looks right. It is headed to a legal team that will ask how the evidence was handled.</p>
+        <p class="judgq">How does the student confirm the AI touched only a copy and left the hashed originals alone?</p>
       </div>
       <details class="scenario">
-        <summary>Context · You advise a small org with no forensics team</summary>
-        <p>A manager pasted the incident into a chatbot and it produced a clean timeline in seconds. They want to send it to their cyber insurer as it is.</p>
-        <p class="judgq">What would you want to know about where that data came from and what the AI changed before it leaves the building?</p>
+        <summary>Beat 3 · The write-up</summary>
+        <p>AI drafted the executive summary. It reads clean and sure of itself, more sure than the evidence supports. It is going to leadership.</p>
+        <p class="judgq">What does the student change before their name goes on it?</p>
       </details>
-      <p class="trainingend" style="margin-top:12px">No answer key. The seat changes the move. What does not change is that the person who signs it owns whether the evidence survived.</p>
+      <div class="report show" style="margin-top:12px"><b>WHAT THE STUDENT HANDS IN</b><p>One page: the AI's output, what they checked, what they changed, and the call they are signing. That page is the artifact. A hiring manager can hold it. A flashcard app cannot produce it.</p></div>
+      <p class="trainingend" style="margin-top:12px">No answer key. The instructor runs the discussion. What holds across every beat is that the person who signs it owns what the AI did and did not do.</p>
     </div>
   </div>
-
-  <p class="why" style="margin-top:16px">Two objectives, one pattern. The AI hands over a strong, correct answer in seconds, and it still cannot see your system or sign your name. The move against the real evidence, and the finding you own, is the job. That is what the exam assumes and the employer pays for, and it is the one thing AI does not touch.</p>
 
   <div class="next" style="border-left-color:var(--navy);margin-top:18px">
     <b>WHY IT GETS YOU ASKED BACK</b>
