@@ -210,6 +210,18 @@ section>h2::before{content:"";display:block;width:34px;height:4px;border-radius:
 .choice.correct{border-color:var(--ok);box-shadow:inset 0 0 0 1px var(--ok);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .ctag{font-family:Archivo,sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;color:var(--ok);white-space:nowrap}
 .trainingend{font-style:italic;color:var(--muted)}
+.scenario{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;padding:12px 14px;margin-top:12px}
+.scenario p{margin:0 0 8px 0;font-size:13.5px}
+.scenario p:last-child{margin-bottom:0}
+.scenlabel,details.scenario>summary{font-family:Archivo,sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.08em;color:var(--gold-deep);text-transform:uppercase}
+.scenlabel{margin-bottom:8px}
+.judgq{font-weight:600;color:var(--ink)}
+details.scenario>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:9px;min-height:28px}
+details.scenario[open]>summary{margin-bottom:8px}
+details.scenario>summary::-webkit-details-marker{display:none}
+details.scenario>summary::before{content:"+";font-family:Archivo,sans-serif;font-size:16px;line-height:1;color:var(--gold-deep)}
+details.scenario[open]>summary::before{content:"\2212"}
+details.scenario>summary:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;border-radius:4px}
 
 /* sample dashboard */
 .samplelab{font-family:Archivo,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;color:var(--muted)}
@@ -572,9 +584,20 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     <p class="trainingend">You see why D is right and the rest are wrong, and you move to the next question. That is where training stops.</p>
     <div class="jobtask">
       <div class="jobhead">ON THE JOB · WHERE THE JOB PICKS UP</div>
-      <p>On the exam, D is an answer you know. On the job, AI is in the workflow and does the thing D describes: it runs the scan and hands you the result. So getting D right is no longer you knowing to check coverage and doing it by hand. The AI does the scanning. Whether coverage actually happens now rides on what you set before it runs. Here is what it handed back:</p>
-      <div class="terminal" id="dastTerm" role="img" aria-label="Dynamic scan log: the session expires right after login, only 1 of 24 signed-in pages are reached, and the scan still reports zero vulnerabilities."><div class="tbar"><i class="d1"></i><i class="d2"></i><i class="d3"></i><span>dynamic scan · portal.local</span></div><div class="tbody" id="dastBody"></div></div>
-      <p style="margin-top:12px">Clean, 0 found. But the session dropped after login, so it only reached 1 of 24 signed-in pages and never tested the code the finding is about. "Verify authenticated coverage" only really happened if you scoped the scan to stay logged in, and then checked that it did. That upstream step is the job, and you find it by working with the AI right here, watching what it actually did. The AI can run the scan. Only you can make sure it covered what matters, and the result you sign is yours.</p>
+      <p>On the exam, D is an answer you know. On the job, AI is in the workflow and does the thing D describes: it runs the scan and hands you the result. Getting D right is no longer you knowing to check coverage and doing it by hand. Same skill, but where it lands depends on the seat you are in.</p>
+      <div class="scenario">
+        <div class="scenlabel">Context · You build apps for a SaaS company</div>
+        <p>A release ships next week. The AI ran the authenticated scan and handed this back:</p>
+        <div class="terminal" id="dastTerm" role="img" aria-label="Dynamic scan log: the session expires right after login, only 1 of 24 signed-in pages are reached, and the scan still reports zero vulnerabilities."><div class="tbar"><i class="d1"></i><i class="d2"></i><i class="d3"></i><span>dynamic scan · portal.local</span></div><div class="tbody" id="dastBody"></div></div>
+        <p style="margin-top:12px">Clean, 0 found. But the session dropped after login, so it reached 1 of 24 signed-in pages and never tested the code the finding is about. The customer's security team will read this report. The date is set.</p>
+        <p class="judgq">What do you do with "0 found," and what do you tell the customer about what was actually tested?</p>
+      </div>
+      <details class="scenario">
+        <summary>Context · You help a nonprofit decide whether to buy an app</summary>
+        <p>A vendor hands your team a scan report that says 0 vulnerabilities. You did not run it. You cannot re-run it. The board wants to move.</p>
+        <p class="judgq">What do you need to know about how that scan was run before you let the number decide the purchase?</p>
+      </details>
+      <p class="trainingend" style="margin-top:12px">No answer key. The seat changes the move. What does not change is that the person who signs it owns what the scan did and did not cover.</p>
     </div>
   </div>
 
@@ -592,9 +615,20 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     <p class="trainingend">You see why A is right and the rest are wrong, and you move to the next question. That is where training stops.</p>
     <div class="jobtask">
       <div class="jobhead">ON THE JOB · WHERE THE JOB PICKS UP</div>
-      <p>On the exam, A is an answer you know. On the job, AI is in the workflow and does what A describes: it normalizes the times and builds the timeline. So preserving the evidence is no longer you handling the copy by hand. The AI handles it. Whether integrity holds now rides on how you set the AI up before it runs, and what you check after. You open the two logs and look:</p>
-      <div class="clocks" role="img" aria-label="Two clocks side by side: the endpoint clock reads seven minutes ahead of the firewall clock."><svg viewBox="0 0 320 124"><circle cx="80" cy="52" r="38" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"/><line x1="80" y1="14" x2="80" y2="20" stroke="currentColor" stroke-width="2.5"/><line x1="80" y1="52" x2="63" y2="41" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="80" y1="52" x2="100" y2="30" stroke="var(--gold-deep)" stroke-width="2.5" stroke-linecap="round"/><circle cx="80" cy="52" r="3" fill="currentColor"/><circle cx="240" cy="52" r="38" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"/><line x1="240" y1="14" x2="240" y2="20" stroke="currentColor" stroke-width="2.5"/><line x1="240" y1="52" x2="223" y2="42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="240" y1="52" x2="240" y2="22" stroke="var(--gold-deep)" stroke-width="2.5" stroke-linecap="round"/><circle cx="240" cy="52" r="3" fill="currentColor"/><text x="80" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">ENDPOINT · +7 MIN</text><text x="240" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ok)">FIREWALL · CORRECT</text></svg></div>
-      <p style="margin-top:10px">The endpoint ran seven minutes ahead of the firewall, and the AI corrected it. "Normalize in a copy, keep the originals" only really held if you pointed the AI at a copy, not the originals, and then confirmed it moved only the endpoint and left the hashed originals alone. That upstream step is the job, and you find it by working with the AI at this step. The AI can build the timeline. Only you can make sure the evidence survived it, and the report you sign is yours.</p>
+      <p>On the exam, A is an answer you know. On the job, AI is in the workflow and does what A describes: it normalizes the times and builds the timeline. Preserving the evidence is no longer you handling the copy by hand. Same skill, but what it takes to protect the evidence depends on the seat you are in.</p>
+      <div class="scenario">
+        <div class="scenlabel">Context · You are the analyst on an active case</div>
+        <p>You asked the AI to line the events up. The endpoint clock ran seven minutes ahead of the firewall, and it corrected the skew:</p>
+        <div class="clocks" role="img" aria-label="Two clocks side by side: the endpoint clock reads seven minutes ahead of the firewall clock."><svg viewBox="0 0 320 124"><circle cx="80" cy="52" r="38" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"/><line x1="80" y1="14" x2="80" y2="20" stroke="currentColor" stroke-width="2.5"/><line x1="80" y1="52" x2="63" y2="41" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="80" y1="52" x2="100" y2="30" stroke="var(--gold-deep)" stroke-width="2.5" stroke-linecap="round"/><circle cx="80" cy="52" r="3" fill="currentColor"/><circle cx="240" cy="52" r="38" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"/><line x1="240" y1="14" x2="240" y2="20" stroke="currentColor" stroke-width="2.5"/><line x1="240" y1="52" x2="223" y2="42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="240" y1="52" x2="240" y2="22" stroke="var(--gold-deep)" stroke-width="2.5" stroke-linecap="round"/><circle cx="240" cy="52" r="3" fill="currentColor"/><text x="80" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">ENDPOINT · +7 MIN</text><text x="240" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ok)">FIREWALL · CORRECT</text></svg></div>
+        <p style="margin-top:10px">The timeline looks right. It is going to a legal team, and the other side will ask how the evidence was handled.</p>
+        <p class="judgq">Before your name goes on it, how do you satisfy yourself the AI touched only a copy and left the hashed originals alone?</p>
+      </div>
+      <details class="scenario">
+        <summary>Context · You advise a small org with no forensics team</summary>
+        <p>A manager pasted the incident into a chatbot and it produced a clean timeline in seconds. They want to send it to their cyber insurer as it is.</p>
+        <p class="judgq">What would you want to know about where that data came from and what the AI changed before it leaves the building?</p>
+      </details>
+      <p class="trainingend" style="margin-top:12px">No answer key. The seat changes the move. What does not change is that the person who signs it owns whether the evidence survived.</p>
     </div>
   </div>
 
