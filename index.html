@@ -26,6 +26,8 @@ body{background:var(--bg);color:var(--ink);font-family:'Source Sans 3',sans-seri
 .wrap{max-width:980px;margin:0 auto}
 .skip{position:absolute;left:16px;top:-60px;background:var(--navy);color:var(--navy-ink);font-family:Archivo,sans-serif;font-weight:700;font-size:13px;padding:10px 16px;border-radius:8px;z-index:20;transition:top .15s}
 .skip:focus{top:10px;outline:2px solid var(--gold);outline-offset:2px}
+.draftmark{position:fixed;top:12px;right:12px;z-index:50;font-family:Archivo,sans-serif;font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 12px;opacity:.9;pointer-events:none}
+@media (max-width:760px){.draftmark{top:8px;right:8px;font-size:10px;padding:4px 9px}}
 h1,h2,h3{font-family:Archivo,sans-serif;text-wrap:balance}
 .eyebrow{font-family:Archivo,sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--gold-deep)}
 .brandrow{display:flex;align-items:center;gap:11px}
@@ -228,6 +230,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 </style>
 
 <div class="wrap">
+<div class="draftmark">Draft · in progress</div>
 <a class="skip" href="#main">Skip to the playbook</a>
 <header class="hero">
   <div class="brandrow"><img class="logo" src="img/ypifany-logo.png" alt="Ypifany" width="44" height="44"><div class="eyebrow">AN YPIFANY PROCESS</div></div>
