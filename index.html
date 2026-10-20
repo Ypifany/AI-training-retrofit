@@ -190,6 +190,20 @@ section>h2::before{content:"";display:block;width:34px;height:4px;border-radius:
 .promptbox{background:var(--new-bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.45;color:var(--ink)}
 .reveal{display:none}
 .reveal.show{display:block;margin-top:10px}
+.terminal{background:#0E1626;border:1px solid #1C2B4B;border-radius:12px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:4px 0}
+.terminal .tbar{background:#13203A;padding:9px 14px;display:flex;align-items:center;gap:7px;border-bottom:1px solid #223154}
+.terminal .tbar i{width:11px;height:11px;border-radius:50%;display:block}
+.terminal .d1{background:#E5533C}.terminal .d2{background:#E2B23C}.terminal .d3{background:#2E9E5B}
+.terminal .tbar span{margin-left:8px;color:#9FB2D6;font-size:12px;letter-spacing:.03em}
+.terminal .tbody{padding:14px 16px;min-height:150px;font-size:13px;line-height:1.65;color:#C7D6F0}
+.terminal .ln{white-space:pre-wrap}
+.terminal .ln .p{color:#D9B544}.terminal .ln .ok{color:#5FBF86}.terminal .ln .warn{color:#E89A3C}.terminal .ln .dim{color:#9FB2D6}
+.terminal .cursor{display:inline-block;width:8px;height:15px;background:#D9B544;vertical-align:-2px;animation:tblink 1s steps(1) infinite}
+@keyframes tblink{50%{opacity:0}}
+.clocks{color:var(--ink);text-align:center;margin:12px 0}
+.clocks svg{width:300px;max-width:100%;height:auto}
+.clocks text{font-family:Archivo,sans-serif;letter-spacing:.04em}
+@media (prefers-reduced-motion:reduce){.terminal .cursor{animation:none}}
 
 /* sample dashboard */
 .samplelab{font-family:Archivo,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;color:var(--muted)}
@@ -543,7 +557,9 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 
   <div class="cert drill">
     <div class="certhead"><span class="chip gold">CySA+ · Objective 2.2</span> Interpreting vulnerability assessment results</div>
-    <p>On the exam: a static scan flags a possible SQL injection, a dynamic scan reports nothing, but the dynamic scan's session expired right after login so it never tested the signed-in pages. <strong>Exam answer: D, keep the finding open and fix the coverage before retesting.</strong> Ask an AI and it gets this right. On the exam, AI wins.</p>
+    <p>On the exam: a static scan flags a possible SQL injection. Then the dynamic scan runs.</p>
+    <div class="terminal" id="dastTerm" role="img" aria-label="Dynamic scan log: the session expires right after login, only 1 of 24 signed-in pages are reached, and the scan still reports zero vulnerabilities."><div class="tbar"><i class="d1"></i><i class="d2"></i><i class="d3"></i><span>dynamic scan · portal.local</span></div><div class="tbody" id="dastBody"></div></div>
+    <p style="margin-top:12px"><strong>Exam answer: D, keep the finding open and fix the coverage before retesting.</strong> The scan reached 1 of 24 signed-in pages before its session dropped, so "0 found" proves nothing. Ask an AI and it gets this right. On the exam, AI wins.</p>
     <div class="jobtask">
       <div class="jobhead">ON THE JOB · WHERE AI ENTERS · YOUR NEXT MOVE</div>
       <p>You are the analyst now. To triage the conflict fast, you ask an AI, and it gives a genuinely good answer:</p>
@@ -556,14 +572,16 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
         <button type="button" class="qopt" aria-pressed="false">Re-run the DAST scan with default settings and trust the second result.</button>
       </div>
       <div class="reveal" aria-live="polite">
-        <div class="verdict good show"><strong>That is the move.</strong> The AI gave you the map: four reasons a scan can miss a real bug. It cannot tell you which one is true in your portal, because it cannot see your portal. So you go to the real evidence, the session log and the live endpoint, settle which cause is real, and decide. The AI reasons for free. The checking against your system, and the finding you sign, are the job.</div>
+        <div class="verdict good show"><strong>That is the move.</strong> The AI gave you the map: four reasons a scan can miss a real bug. It cannot tell you which one is true in your portal, because it cannot see your portal. So you go to the real evidence, the session log and the live endpoint, and settle which cause is real. And the exact next step is your shop's call, not the AI's: whether your policy makes you re-test, whether you have the tool, whether there is time and budget to re-scan. The AI cannot see your shop. You can, and the finding you sign is yours.</div>
       </div>
     </div>
   </div>
 
   <div class="cert drill" style="margin-top:16px">
     <div class="certhead"><span class="chip gold">CySA+ · Objective 3.3</span> Incident response and evidence integrity</div>
-    <p>On the exam: an endpoint clock ran seven minutes fast during an incident, the firewall clock was right, and the original logs are already hashed. <strong>Exam answer: A, normalize the times in a separate copy, document it, and keep the originals untouched.</strong> Ask an AI and it gets this right, and it will even build the timeline for you.</p>
+    <p>On the exam: during an incident, the endpoint clock ran seven minutes fast while the firewall clock stayed right. The originals are already hashed.</p>
+    <div class="clocks" role="img" aria-label="Two clocks side by side: the endpoint clock reads seven minutes ahead of the firewall clock."><svg viewBox="0 0 320 124"><circle cx="80" cy="52" r="38" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"/><line x1="80" y1="14" x2="80" y2="20" stroke="currentColor" stroke-width="2.5"/><line x1="80" y1="52" x2="63" y2="41" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="80" y1="52" x2="100" y2="30" stroke="var(--gold-deep)" stroke-width="2.5" stroke-linecap="round"/><circle cx="80" cy="52" r="3" fill="currentColor"/><circle cx="240" cy="52" r="38" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"/><line x1="240" y1="14" x2="240" y2="20" stroke="currentColor" stroke-width="2.5"/><line x1="240" y1="52" x2="223" y2="42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="240" y1="52" x2="240" y2="22" stroke="var(--gold-deep)" stroke-width="2.5" stroke-linecap="round"/><circle cx="240" cy="52" r="3" fill="currentColor"/><text x="80" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">ENDPOINT · +7 MIN</text><text x="240" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ok)">FIREWALL · CORRECT</text></svg></div>
+    <p style="margin-top:10px"><strong>Exam answer: A, normalize the times in a separate copy, document it, and keep the originals untouched.</strong> Ask an AI and it gets this right, and it will even build the timeline for you.</p>
     <div class="jobtask">
       <div class="jobhead">ON THE JOB · WHERE AI ENTERS · YOUR NEXT MOVE</div>
       <p>You ask the AI to normalize the times and build the timeline. It does it right, on a working copy, and hands it back:</p>
@@ -576,7 +594,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
         <button type="button" class="qopt" aria-pressed="false">Sync the endpoint clock and pull the logs again so the times are native.</button>
       </div>
       <div class="reveal" aria-live="polite">
-        <div class="verdict good show"><strong>That is the move.</strong> The AI did it right, and you still cannot sign what you did not check. The AI cannot see whether your originals are intact, or whether the copy in front of you is the one going in the report. So you open the evidence, confirm it against the originals, and put your name on it. Verifying is not doubt about the AI. It is ownership, and the name on the report is yours, not the tool's.</div>
+        <div class="verdict good show"><strong>That is the move.</strong> The AI did it right, and you still cannot sign what you did not check. The AI cannot see whether your originals are intact, or whether the copy in front of you is the one going in the report. So you open the evidence, confirm it against the originals, and put your name on it. How you store and log that copy follows your shop's chain-of-custody policy and the tools you actually have, not the AI's defaults. Verifying is not doubt about the AI. It is ownership, and the name on the report is yours.</div>
       </div>
     </div>
   </div>
@@ -853,5 +871,33 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       });
     });
   });
+})();
+
+/* ---- Dynamic-scan terminal animation ---- */
+(function(){
+  var body = document.getElementById('dastBody'); if(!body) return;
+  var term = document.getElementById('dastTerm');
+  var LINES = [
+    '<span class="p">$</span> dast-scan --target portal.local --auth session',
+    '<span class="dim">[09:41:02]</span> authenticating… <span class="ok">session established</span>',
+    '<span class="dim">[09:41:03]</span> GET /dashboard         <span class="ok">200 OK</span>',
+    '<span class="dim">[09:41:03]</span> GET /account/settings  <span class="warn">302 → /login  session expired</span>',
+    '<span class="dim">[09:41:04]</span> GET /orders            <span class="warn">302 → /login</span>',
+    '<span class="dim">[09:41:04]</span> GET /admin             <span class="warn">302 → /login</span>',
+    '<span class="dim">[09:41:05]</span> authenticated pages reached: <span class="warn">1 of 24</span>',
+    '<span class="dim">[09:41:06]</span> scan complete — <span class="ok">0 vulnerabilities found</span>'
+  ];
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var started = false;
+  function run(){
+    if(started) return; started = true;
+    if(reduced){ LINES.forEach(function(h){ var d=document.createElement('div'); d.className='ln'; d.innerHTML=h; body.appendChild(d); }); var c=document.createElement('span'); c.className='cursor'; body.appendChild(c); return; }
+    var i=0;
+    (function step(){ if(i<LINES.length){ var d=document.createElement('div'); d.className='ln'; d.innerHTML=LINES[i]; body.appendChild(d); i++; setTimeout(step,500); } else { var c=document.createElement('span'); c.className='cursor'; body.appendChild(c); } })();
+  }
+  var det = term.closest('details');
+  if(det){ det.addEventListener('toggle', function(){ if(det.open) run(); }); }
+  if('IntersectionObserver' in window){ var ob=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ run(); ob.disconnect(); } }); }, {threshold:0.2}); ob.observe(term); }
+  else { run(); }
 })();
 </script>
