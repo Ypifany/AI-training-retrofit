@@ -510,7 +510,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 
 <section>
   <h2>The same process works in other training</h2>
-  <p class="sub">The six moves and the ground rules never change, and the existing course is never replaced. Moving this process to a different kind of training changes only three things: which AI the learner uses, what the learner checks the AI against, and whose private information gets protected. Click a training type and watch those three change while everything else holds still.</p>
+  <p class="sub">The six moves and the ground rules never change, and the existing course is never replaced. Moving this process to a different kind of training changes only three things: which AI the learner uses, what the learner checks the AI against, and where the edge sits for that learner. Click a training type and watch those three change while everything else, privacy by default included, holds still.</p>
   <div class="pills" id="ctxPills" role="group" aria-label="Pick a training type">
     <button type="button" class="pill" aria-pressed="true" data-ctx="nonprofit">Nonprofit training</button>
     <button type="button" class="pill" aria-pressed="false" data-ctx="cert">Certification training</button>
@@ -519,13 +519,13 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   </div>
   <div class="fixedrail" aria-hidden="true">
     <span class="lab">NEVER CHANGES:</span>
-    <span class="mv">1 Pick the activity</span><span class="mv">2 Choose the touchpoint</span><span class="mv">3 Human first</span><span class="mv">4 Verify to submit</span><span class="mv">5 One new objective</span><span class="mv">6 Disclose</span>
+    <span class="mv">1 Pick the activity</span><span class="mv">2 Place the AI step</span><span class="mv">3 Human first</span><span class="mv">4 Check is the submission</span><span class="mv">5 One new objective</span><span class="mv">6 Disclose</span><span class="mv">Privacy by default</span>
   </div>
   <div id="swapLive" aria-live="polite">
   <div class="swaps">
     <div class="swap"><span class="slot">CHANGE 1 · WHICH AI THE LEARNER USES</span><p class="val" id="sw1"></p></div>
     <div class="swap"><span class="slot">CHANGE 2 · WHAT THEY CHECK THE AI AGAINST</span><p class="val" id="sw2"></p></div>
-    <div class="swap"><span class="slot">CHANGE 3 · WHAT GETS PROTECTED</span><p class="val" id="sw3"></p></div>
+    <div class="swap"><span class="slot">CHANGE 3 · WHERE THE EDGE IS</span><p class="val" id="sw3"></p></div>
   </div>
   <div class="lesson-ex"><b>ONE RETROFITTED LESSON LOOKS LIKE THIS</b><p id="swEx"></p></div>
   <p class="why" id="swNote"></p>
@@ -690,28 +690,28 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     nonprofit: {
       s1: "The Gem coach tool the program already deploys. Cost: nothing new.",
       s2: "The tool in front of the student: the translator, Task Manager, the live attack map.",
-      s3: "Student privacy. No student information ever goes into an AI tool.",
+      s3: "The part of the system a beginner cannot check yet, like why a command works or how the pieces connect. The stretch stays close enough that he can still test the result himself.",
       ex: "A student decodes a binary message by hand (the existing activity, unchanged). New slide after it: he asks the Gem to decode the same message, then proves the Gem right or wrong with his own translator.",
       note: "This is the worked example above, exactly as shown."
     },
     cert: {
       s1: "The learner's own chat assistant. A free tier is enough.",
       s2: "The lab the learner already runs, plus the official exam objectives.",
-      s3: "Work details learners paste in while practicing — real company names, real network information.",
+      s3: "Applying a control to a real system, not just naming it. The stretch is one real system past the exam question, close enough that he can check it against the setup in front of him.",
       ex: "The learner sets up a small network in the lab (the existing exercise, unchanged). New step after it: ask the AI to explain what each setting does, then test the AI's explanation against what the lab actually shows.",
       note: "The added learning objective maps straight onto an exam objective, so the course still prepares for the same test."
     },
     compliance: {
       s1: "The copilot the company has approved. Picking it is a compliance decision, not a preference.",
       s2: "The policy document itself. No lab or tool needed.",
-      s3: "Company and client data. Pasting the wrong thing into an AI tool can itself be a reportable incident, so this protection becomes part of the lesson.",
+      s3: "A regulation's intent, not just its words. The stretch is the AI reading past the text into how it applies here, which the learner checks against the actual policy and the situation.",
       ex: "The employee answers a scenario question first (the existing quiz, unchanged). New step after it: ask the AI the same question, then check the AI's answer against the actual policy and flag where the AI got it wrong.",
       note: "The one real adaptation: with no hands-on tool, the learner checks the AI against the policy document. Same move, different reference."
     },
     bootcamp: {
       s1: "The bootcamp's chosen assistant, or the learner's own. A free tier works.",
       s2: "The project or lab the learner is already building in the course.",
-      s3: "Any real employer or client details a learner pastes in while practicing.",
+      s3: "Code or tools past what the learner has written. The stretch is one step beyond his current build, close enough that he can run it and see if it does what he asked.",
       ex: "A learner builds one milestone of the course project by hand (the existing assignment, unchanged). New step after it: ask the AI to review that milestone, then confirm or reject each suggestion against what the project actually requires.",
       note: "The course project becomes the thing the AI gets checked against. Nothing new gets built."
     }
