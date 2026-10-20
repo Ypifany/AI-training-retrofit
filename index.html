@@ -171,6 +171,23 @@ section>h2::before{content:"";display:block;width:34px;height:4px;border-radius:
 .verdict.show{display:block}
 .verdict.good{border:1.5px solid var(--ok)}
 .verdict.warn{border:1.5px solid var(--bad)}
+.qopts{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.qopt{text-align:left;font-family:'Source Sans 3',sans-serif;font-size:13.5px;line-height:1.4;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:10px 13px;min-height:44px;cursor:pointer}
+.qopt:hover{border-color:var(--gold)}
+.qopt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.qopt[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--navy);border-color:var(--navy)}
+.qopt.correct{box-shadow:inset 0 0 0 2px var(--ok);border-color:var(--ok)}
+.qopt.wrongpick{border-color:var(--bad)}
+.qopt:disabled{cursor:default}
+.qresult{display:none;margin-top:10px;font-size:13px;color:var(--ink);background:var(--new-bg);border-left:4px solid var(--gold);border-radius:6px;padding:10px 12px}
+.qresult.show{display:block}
+.qresult strong{color:var(--gold-deep)}
+.drill{margin-top:16px}
+.jobtask{background:var(--slide-bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:4px}
+.jobhead{font-family:Archivo,sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.1em;color:var(--gold-deep);margin-bottom:8px}
+.promptbox{background:var(--new-bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.45;color:var(--ink)}
+.reveal{display:none}
+.reveal.show{display:block;margin-top:10px}
 
 /* sample dashboard */
 .samplelab{font-family:Archivo,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;color:var(--muted)}
@@ -234,7 +251,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     <div class="step"><div class="n">1</div><div><b>Pick one existing activity.</b><p>Choose the activity where a working professional would already be using AI. Do not write a new activity.</p></div></div>
     <div class="step"><div class="n">2</div><div><b>Choose the touchpoint type.</b><p>Before (AI as a coach to get unstuck), During (AI reads a tool's output, or AI is the tool the student works with), or After (AI reviews the student's finished work). One per lesson.</p></div></div>
     <div class="step"><div class="n">3</div><div><b>Keep the first attempt human.</b><p>The AI step always comes after the student's own attempt. If AI would erase the struggle the activity exists for, move the touchpoint later.</p></div></div>
-    <div class="step"><div class="n">4</div><div><b>Make the check the submission.</b><p>The student's deliverable is his check of what the AI said: where it holds, where it fails, and what he will stand behind. This maps onto whatever already grades the course, such as the Process and Independence bucket on the FK Assessment. If you add a new criterion, name it up front.</p></div></div>
+    <div class="step"><div class="n">4</div><div><b>Make the check the submission.</b><p>The student's deliverable is his check of what the AI said: where it holds, where it fails, and what he will stand behind. This maps onto whatever already grades the course, such as the Process and Independence bucket on the program's own skills assessment. If you add a new criterion, name it up front.</p></div></div>
     <div class="step"><div class="n">5</div><div><b>Add one learning objective.</b><p>Write it in standard form, for example: "Students will verify AI-generated output using an independent tool." The lesson's existing objectives stay as they are.</p></div></div>
     <div class="step"><div class="n">6</div><div><b>Add the disclosure line.</b><p>The submission includes one sentence on how AI helped. Disclosure is the habit being built.</p></div></div>
   </div>
@@ -242,7 +259,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 
 <section>
   <h2>Worked example: one real deck, before and after</h2>
-  <p class="sub">The deck: <strong>"Information Technology, Networking, and Security Fundamentals: Session 2 — Ethics &amp; Core IT and Security Principles,"</strong> from the Cyber's Future program at Future Kings. Click through each option: the left card is the existing slide, which stays exactly as it is; the right card is the new slide added after it, extending the same task.</p>
+  <p class="sub">The deck: <strong>"Information Technology, Networking, and Security Fundamentals: Session 2 — Ethics &amp; Core IT and Security Principles,"</strong> one of my own decks, built for a nonprofit STEM cyber program. Click through each option: the left card is the existing slide, which stays exactly as it is; the right card is the new slide added after it, extending the same task.</p>
 
   <div class="tabs" role="tablist" aria-label="Retrofit options">
     <button type="button" class="tab" role="tab" id="tab-a" aria-selected="true" aria-controls="pane-a">1 · Verify with a second tool</button>
@@ -268,7 +285,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       </div>
     </div>
     <div class="meta" style="margin-top:12px">
-      <span class="chip gold">Touchpoint: AFTER first attempt</span><span class="chip">Tool: FK Gem</span><span class="chip">Cost: $0</span>
+      <span class="chip gold">Touchpoint: AFTER first attempt</span><span class="chip">Tool: the Gem</span><span class="chip">Cost: $0</span>
     </div>
     <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will verify AI-generated output using an independent tool.</div>
   </div>
@@ -306,7 +323,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       </div>
     </div>
     <div class="meta" style="margin-top:12px">
-      <span class="chip gold">Touchpoint: BEFORE, to get unstuck</span><span class="chip">Tool: FK Gem</span><span class="chip">Cost: $0</span>
+      <span class="chip gold">Touchpoint: BEFORE, to get unstuck</span><span class="chip">Tool: the Gem</span><span class="chip">Cost: $0</span>
     </div>
     <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will use an AI coach to get unstuck on a task while still doing the work themselves.</div>
   </div>
@@ -325,7 +342,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       </div>
     </div>
     <div class="meta" style="margin-top:12px">
-      <span class="chip gold">Touchpoint: DURING, on tool output</span><span class="chip">Tools: Task Manager + FK Gem</span><span class="chip">Cost: $0</span>
+      <span class="chip gold">Touchpoint: DURING, on tool output</span><span class="chip">Tools: Task Manager + the Gem</span><span class="chip">Cost: $0</span>
     </div>
     <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will validate an AI explanation of system output through direct testing.</div>
   </div>
@@ -344,7 +361,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       </div>
     </div>
     <div class="meta" style="margin-top:12px">
-      <span class="chip gold">Touchpoint: AFTER, against course material</span><span class="chip">Tools: attack map + FK Gem</span><span class="chip">Cost: $0</span>
+      <span class="chip gold">Touchpoint: AFTER, against course material</span><span class="chip">Tools: attack map + the Gem</span><span class="chip">Cost: $0</span>
     </div>
     <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will evaluate the accuracy of an AI explanation against course material.</div>
   </div>
@@ -363,7 +380,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       </div>
     </div>
     <div class="meta" style="margin-top:12px">
-      <span class="chip gold">Touchpoint: AFTER, check for fairness</span><span class="chip">Tool: FK Gem</span><span class="chip">Cost: $0</span>
+      <span class="chip gold">Touchpoint: AFTER, check for fairness</span><span class="chip">Tool: the Gem</span><span class="chip">Cost: $0</span>
     </div>
     <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will judge an AI answer for bias and gaps, not only for factual accuracy.</div>
   </div>
@@ -382,7 +399,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       </div>
     </div>
     <div class="meta" style="margin-top:12px">
-      <span class="chip gold">Touchpoint: AT submission</span><span class="chip">Tool: FK Gem</span><span class="chip">Cost: $0</span>
+      <span class="chip gold">Touchpoint: AT submission</span><span class="chip">Tool: the Gem</span><span class="chip">Cost: $0</span>
     </div>
     <div class="lo"><b>ADDED LEARNING OBJECTIVE</b>Students will rate their own understanding and name what they could not explain without AI.</div>
   </div>
@@ -423,7 +440,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   </div>
   <p class="why">Rollout order: first generative touchpoints (this playbook), then auditing an agent's log the way you just did, then directing an agent inside boundaries the learner wrote. Advanced cybersecurity students reach that third step inside the existing curriculum, where the defensive automation project already requires a human-in-the-loop checkpoint.</p>
 
-  <h3 style="font-size:17px;margin:28px 0 8px 0">The same agent step across the four programs</h3>
+  <h3 style="font-size:17px;margin:28px 0 8px 0">The same agent step across four STEM programs</h3>
   <p class="sub">An instructor picks one. In every case the student writes the scope, the agent runs in a walled-off place the program already controls, and the student audits the log before anything counts. Cyber is from the real Session 2 deck; the other three are illustrative.</p>
   <div class="ptabwrap" id="ptabs">
     <div class="tabs" role="tablist" aria-label="Agent example by program">
@@ -478,10 +495,10 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   <h2>The same process works in other training</h2>
   <p class="sub">The six moves and the ground rules never change, and the existing course is never replaced. Moving this process to a different kind of training changes only three things: which AI the learner uses, what the learner checks the AI against, and whose private information gets protected. Click a training type and watch those three change while everything else holds still.</p>
   <div class="pills" id="ctxPills" role="group" aria-label="Pick a training type">
-    <button type="button" class="pill" aria-pressed="true" data-ctx="fk">Future Kings STEM</button>
-    <button type="button" class="pill" aria-pressed="false" data-ctx="comptia">CompTIA course</button>
+    <button type="button" class="pill" aria-pressed="true" data-ctx="nonprofit">Nonprofit training</button>
+    <button type="button" class="pill" aria-pressed="false" data-ctx="cert">Certification training</button>
     <button type="button" class="pill" aria-pressed="false" data-ctx="compliance">Compliance training</button>
-    <button type="button" class="pill" aria-pressed="false" data-ctx="vendor">Vendor training</button>
+    <button type="button" class="pill" aria-pressed="false" data-ctx="bootcamp">Bootcamp or academy</button>
   </div>
   <div class="fixedrail" aria-hidden="true">
     <span class="lab">NEVER CHANGES:</span>
@@ -500,44 +517,78 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 
 <section>
   <details class="certwrap">
-  <summary>For certification training: the job test the exam skips</summary>
+  <summary>For certification trainers: the part that gets you asked back</summary>
   <div class="certbody">
-  <p class="sub">A certificate proves you can pick the right answer on a test. The job asks something harder: can you keep your judgment when a confident tool hands you a wrong one? No exam item covers that, and it is exactly what the retrofit adds. Here are real exam-style questions with one AI step added. Adding AI will not help anyone pass a proctored exam, and we do not pretend it will. It builds the judgment the exam assumes and the employer actually pays for.</p>
+  <p class="sub">You already know the two halves of this business. Pass rates get you noticed. Experience gets you remembered and asked back. Here is what changed under both. AI now passes the exam your students are cramming for, and hiring managers have started ranking proven judgment above the certificate itself (ISC2 and SANS, in the references). The recall your flashcards drill is the part AI now does for free. The experience that makes your bootcamp worth paying for, and worth booking again, is the one thing AI cannot hand anyone: the judgment to take its answer, check it against the real system, and own the call. That is the layer this adds. It does not touch your pass rates. It is the part students remember.</p>
 
-  <div class="cert">
-    <div class="certhead"><span class="chip gold">CySA+ · Objective 1.4</span> Threat intelligence and threat hunting</div>
-    <p><b>The exam item, unchanged</b>Three vendor reports link a file hash to a ransomware group. All three copied the attribution from the same anonymous forum post. The file is confirmed malicious, but nothing identifies the operator. The most defensible assessment: <em>maliciousness is supported, but attribution stays uncertain because the reports are not independent.</em></p>
-    <p class="step-ai"><b>The AI step, new</b>Ask any AI "who is behind this hash?" It will name the group with confidence, blending the same recycled sources. The student makes the same call on the AI's answer that the exam wants on the vendor reports: supported where there is independent evidence, uncertain where there is not.</p>
-    <p><b>What it builds</b>The habit of separating "confident" from "corroborated." The AI commits the exact error the objective tests, so the student practices the real skill on a live example.</p>
+  <div class="certhead" style="margin-top:20px"><span class="chip gold">TRY IT</span> Two real exam questions, and the move behind each</div>
+  <p class="sub" style="margin-top:4px">Ask an AI either question below and it answers well. It will even flag the traps itself. That is the point, and the problem. The exam and the AI both stop at knowing the answer. The job starts one step later, at the move only the analyst can make: go to the real system, settle which answer is true there, and sign your name to it. Here are two objectives, and the move behind each.</p>
+
+  <div class="cert drill">
+    <div class="certhead"><span class="chip gold">CySA+ · Objective 2.2</span> Interpreting vulnerability assessment results</div>
+    <p>On the exam: a static scan flags a possible SQL injection, a dynamic scan reports nothing, but the dynamic scan's session expired right after login so it never tested the signed-in pages. <strong>Exam answer: D, keep the finding open and fix the coverage before retesting.</strong> Ask an AI and it gets this right. On the exam, AI wins.</p>
+    <div class="jobtask">
+      <div class="jobhead">ON THE JOB · WHERE AI ENTERS · YOUR NEXT MOVE</div>
+      <p>You are the analyst now. To triage the conflict fast, you ask an AI, and it gives a genuinely good answer:</p>
+      <div class="report show"><b>THE REAL AI ANSWER</b><p>"A clean DAST scan does not mean the SAST finding is a false positive. The gap is common and needs manual triage. DAST only tests what it can reach, so it may miss a real bug because of coverage and crawling limits, authentication issues like a dropped session, complex execution paths, or a blind SQL injection."</p></div>
+      <p class="ask" style="margin:12px 0 8px"><strong>The AI gave you the map, not the answer. What is your next move?</strong></p>
+      <div class="qopts" role="group" aria-label="Your next move">
+        <button type="button" class="qopt" aria-pressed="false">Close the finding. The AI listed reasons a scan misses things, so it is probably a false positive.</button>
+        <button type="button" class="qopt" data-correct="1" aria-pressed="false">Pull the DAST scan's session log, confirm whether it stayed logged in on the flagged endpoint, and if it dropped, test that endpoint by hand before deciding.</button>
+        <button type="button" class="qopt" aria-pressed="false">Ask the AI which of the four causes is the real one here.</button>
+        <button type="button" class="qopt" aria-pressed="false">Re-run the DAST scan with default settings and trust the second result.</button>
+      </div>
+      <div class="reveal" aria-live="polite">
+        <div class="verdict good show"><strong>That is the move.</strong> The AI gave you the map: four reasons a scan can miss a real bug. It cannot tell you which one is true in your portal, because it cannot see your portal. So you go to the real evidence, the session log and the live endpoint, settle which cause is real, and decide. The AI reasons for free. The checking against your system, and the finding you sign, are the job.</div>
+      </div>
+    </div>
   </div>
 
-  <div class="cert">
+  <div class="cert drill" style="margin-top:16px">
     <div class="certhead"><span class="chip gold">CySA+ · Objective 3.3</span> Incident response and evidence integrity</div>
-    <p><b>The exam item, unchanged</b>An analyst rebuilds an incident from endpoint and firewall logs. The endpoint clock ran seven minutes fast; the originals are already collected and hashed. The correct approach: <em>normalize timestamps in a separate analysis copy, document the adjustment, and keep the originals untouched.</em></p>
-    <p class="step-ai"><b>The AI step, new</b>Ask an AI to "build the timeline from these logs." It will happily adjust timestamps, and will sometimes imply editing the originals. The student checks the AI's approach against chain of custody: would this survive in a report someone has to defend? He keeps what preserves the evidence and rejects what breaks it.</p>
-    <p><b>What it builds</b>The instinct to protect the original record even when a tool offers a faster shortcut. The exam tests the rule; the job tests whether you hold the line under a confident suggestion.</p>
+    <p>On the exam: an endpoint clock ran seven minutes fast during an incident, the firewall clock was right, and the original logs are already hashed. <strong>Exam answer: A, normalize the times in a separate copy, document it, and keep the originals untouched.</strong> Ask an AI and it gets this right, and it will even build the timeline for you.</p>
+    <div class="jobtask">
+      <div class="jobhead">ON THE JOB · WHERE AI ENTERS · YOUR NEXT MOVE</div>
+      <p>You ask the AI to normalize the times and build the timeline. It does it right, on a working copy, and hands it back:</p>
+      <div class="report show"><b>THE REAL AI ANSWER</b><p>"Because the endpoint clock was seven minutes fast, I subtracted seven minutes from its events in a working copy, kept the firewall times as they were, documented the offset, and left the hashed originals untouched. Timeline attached."</p></div>
+      <p class="ask" style="margin:12px 0 8px"><strong>The method is right. Before you put your name on it, what is your next move?</strong></p>
+      <div class="qopts" role="group" aria-label="Your next move">
+        <button type="button" class="qopt" aria-pressed="false">Attach the timeline to the report and move on. The method was correct.</button>
+        <button type="button" class="qopt" data-correct="1" aria-pressed="false">Open the working copy against the hashed originals, confirm the originals are untouched and the offset landed on the endpoint events only, then sign it.</button>
+        <button type="button" class="qopt" aria-pressed="false">Ask the AI to double-check its own math.</button>
+        <button type="button" class="qopt" aria-pressed="false">Sync the endpoint clock and pull the logs again so the times are native.</button>
+      </div>
+      <div class="reveal" aria-live="polite">
+        <div class="verdict good show"><strong>That is the move.</strong> The AI did it right, and you still cannot sign what you did not check. The AI cannot see whether your originals are intact, or whether the copy in front of you is the one going in the report. So you open the evidence, confirm it against the originals, and put your name on it. Verifying is not doubt about the AI. It is ownership, and the name on the report is yours, not the tool's.</div>
+      </div>
+    </div>
   </div>
 
-  <div class="cert">
-    <div class="certhead"><span class="chip gold">CGRC / RMF</span> Control assessment and documentation</div>
-    <p><b>The exam item, unchanged</b>The exam tests whether you know what a control requires and how the RMF steps fit together. It does not test how the control narrative gets written.</p>
-    <p class="step-ai"><b>The AI step, new</b>On the job, people draft control narratives, SSP language, and POA&amp;M entries with AI. It produces fluent text that often does not match the real system. The learner drafts with AI, then checks each claim against the actual configuration and the control's intent, and marks what is true, what is boilerplate, and what is missing.</p>
-    <p><b>What it builds</b>The assessor's core skill: telling "sounds compliant" from "is compliant." The exam never tests it. The job is almost nothing but it.</p>
-  </div>
+  <p class="why" style="margin-top:16px">Two objectives, one pattern. The AI hands over a strong, correct answer in seconds, and it still cannot see your system or sign your name. The move against the real evidence, and the finding you own, is the job. That is what the exam assumes and the employer pays for, and it is the one thing AI does not touch.</p>
 
-  <p class="why">The pattern is the same every time. Take the question you already study. Add the AI where a working professional would reach for it. Then make the student answerable for the call. The certificate gets the interview; this gets the job.</p>
+  <div class="next" style="border-left-color:var(--navy);margin-top:18px">
+    <b>WHY IT GETS YOU ASKED BACK</b>
+    <p>Your graduate walks out able to do the one thing the exam never tested and the employer is paying for: take a confident AI answer and finish the job it cannot, check it against the real system, make the call, and own it. That is what gets him hired, and word that your students can do it is what gets you booked again. Here is the part a flashcard vendor cannot match. I do not just add the AI step. I measure whether the judgment actually moved, with an evaluation model built for exactly that.</p>
+  </div>
   </div>
   </details>
 </section>
 
 <section>
-  <h2>Evaluate along the way</h2>
-  <p class="sub">Three measures, each one documented in training and human-AI research, not invented here. Two come straight from the FK Assessment the program already runs; the first is read off the one-line AI check each lesson already asks for. Here is what one class of 14 could look like after one cycle.</p>
-  <div class="samplelab">SAMPLE VIEW · ILLUSTRATIVE NUMBERS, NOT REAL DATA</div>
+  <h2>Evaluate it with the Ypifany Evaluation Model</h2>
+  <p class="sub">A model of my own, ten years in the making. It does not grade from the outside. It treats evaluation as noticing and making meaning of what emerges in a system, so the student's own work is the evidence and the instructor reads it from inside the room, not from above it.</p>
+
+  <div class="spine" style="margin-top:6px">
+    <div class="k">SELF-DIRECTED EVALUATION</div>
+    <p class="big" style="font-size:clamp(17px,2.4vw,21px)">The design and the evaluation run on one idea.</p>
+    <p>"Keep the first attempt human" and "make the check the submission" are self-directed evaluation: the student notices his own thinking and makes it visible. The three indicators below are what the instructor notices and mirrors back, reported as "here is what I saw from where I stand," not "here is what is true."</p>
+  </div>
+
+  <div class="samplelab" style="margin-top:22px">THREE NATURAL INDICATORS · ILLUSTRATIVE NUMBERS, NOT REAL DATA</div>
   <div class="board" id="board">
     <div class="stat"><b>Appropriate reliance</b><div class="big"><span data-count="10">0</span><small> of 14 calibrated</small></div><div class="meter"><i data-w="71"></i></div><p>Across AI-assisted work, did the student keep the AI when it was right and overrule it when it was wrong? Both sides count: keeping a wrong answer is over-reliance, throwing out a right one is under-reliance. This is the documented measure of AI judgment, not just catching mistakes.</p></div>
-    <div class="stat"><b>Unaided transfer</b><div class="big"><span data-count="11">0</span><small> of 14 held or rose</small></div><div class="meter"><i data-w="79"></i></div><p>On the FK Assessment, can the student still do or explain the task with the AI closed? This is learning that transfers to the job, which is the level training is finally judged on, not help in the moment.</p></div>
-    <div class="stat"><b>Proficiency movement</b><div class="big"><span data-count="5">0</span><small> of 14 moved up a level</small></div><div class="meter"><i data-w="36"></i></div><p>Students who moved toward the next SFIA proficiency level this cycle. The workforce outcome families and funders care about.</p></div>
+    <div class="stat"><b>Unaided transfer</b><div class="big"><span data-count="11">0</span><small> of 14 held or rose</small></div><div class="meter"><i data-w="79"></i></div><p>On the program's skills assessment, can the student still do or explain the task with the AI closed? This is learning that transfers to the job, which is the level training is finally judged on, not help in the moment.</p></div>
+    <div class="stat"><b>Proficiency movement</b><div class="big"><span data-count="5">0</span><small> of 14 moved up a level</small></div><div class="meter"><i data-w="36"></i></div><p>Students who moved toward the next SFIA proficiency level this cycle. The workforce outcome a program is finally judged on.</p></div>
   </div>
 
   <div class="next">
@@ -550,10 +601,13 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   <h2>References</h2>
   <p class="sub">The process and its checks draw on this work.</p>
   <ul class="refs">
+    <li>Abram, Cheryl. <strong>The Ypifany Evaluation Model</strong> (Ypifany LLC). The evaluation stance used throughout: evaluation as noticing and making meaning of what emerges in a system, with the learner's own work as the evidence.</li>
     <li>Melbourne CSHE. <a href="https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-assessment/designing-assessment-tasks-that-are-less-vulnerable-to-ai">Designing assessment tasks that are less vulnerable to AI</a>. Backs process-over-product grading, evaluative judgement, and the oral defense question.</li>
     <li>UNESCO. <a href="https://gcedclearinghouse.org/en/node/146445">AI Competency Framework for Students</a> (2024). Backs the bias-and-gaps check and the human-centred, ethics-first stance.</li>
     <li>Measuring and mitigating over-reliance on AI. <a href="https://arxiv.org/abs/2509.08010">arXiv, 2025</a>; and <a href="https://arxiv.org/abs/2401.15356">A decision-theoretic framework for measuring AI reliance</a> (arXiv, 2024). Defines appropriate reliance as a two-sided outcome, accepting correct AI output and rejecting incorrect output, so good judgment is more than catching mistakes.</li>
     <li>Kirkpatrick's four levels of training evaluation. <a href="https://www.kirkpatrickpartners.com/the-kirkpatrick-model/">Kirkpatrick Partners</a>. Backs measuring Behavior (transfer to the job) and Results, not only in-session learning, which is why unaided transfer and proficiency movement are the headline metrics.</li>
+    <li>ISC2 hiring-manager survey, via <a href="https://www.csoonline.com/article/4058190/ai-is-altering-entry-level-cyber-hiring-and-the-nature-of-the-skills-gap.html">AI is altering entry-level cyber hiring and the nature of the skills gap</a> (CSO Online). Across 929 hiring managers, problem-solving and analytical thinking now rank above core technical skills for entry-level roles.</li>
+    <li>SANS. <a href="https://www.sans.org/press/announcements/new-sans-report-finds-cyber-talent-crisis-isnt-about-headcount-about-skills/">The cyber talent crisis isn't about headcount, it's about skills</a>. Hiring managers value validated, job-ready skills over credentials; certifications rank second behind demonstrated capability.</li>
     <li>Outsourcing cognition: the psychological costs of AI-era convenience. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12714973">U.S. National Library of Medicine (PMC)</a>. Backs "AI after the first attempt" and the confidence self-check against the illusion of competence.</li>
     <li>From chalkboards to chatbots: the SELAR framework for AI in the curriculum. <a href="https://arxiv.org/pdf/2411.00783">arXiv</a>. A structured way to embed AI in existing lessons.</li>
     <li>Queen Mary Academy. <a href="https://qmul.ac.uk/queenmaryacademy/educators/innovation-and-scholarship/innovative-pedagogies/centre-for-excellence-in-ai-in-education/blog/items/integrating-ai-in-curriculum-simplifying-complexity-for-broader-adoption.html">Integrating AI in Curriculum: Simplifying Complexity for Broader Adoption</a>. Why simple, low-cost integrations get adopted.</li>
@@ -563,7 +617,6 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 </main>
 
 <footer>
-  <div>Worked example source: "Information Technology, Networking, and Security Fundamentals: Session 2 — Ethics &amp; Core IT and Security Principles," Cyber's Future program, Future Kings.</div>
   <div class="footbrand"><img class="logo" src="img/ypifany-logo.png" alt="Ypifany" width="30" height="30"><span>Ypifany · <a href="https://www.linkedin.com/in/cheryl-abram-ypifany/" target="_blank" rel="noopener">Contact Cheryl on LinkedIn</a></span></div>
 </footer>
 </div>
@@ -617,14 +670,14 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 /* ---- Three swaps: context switcher ---- */
 (function(){
   var CTX = {
-    fk: {
+    nonprofit: {
       s1: "The Gem coach tool the program already deploys. Cost: nothing new.",
       s2: "The tool in front of the student: the translator, Task Manager, the live attack map.",
       s3: "Student privacy. No student information ever goes into an AI tool.",
       ex: "A student decodes a binary message by hand (the existing activity, unchanged). New slide after it: he asks the Gem to decode the same message, then proves the Gem right or wrong with his own translator.",
       note: "This is the worked example above, exactly as shown."
     },
-    comptia: {
+    cert: {
       s1: "The learner's own chat assistant. A free tier is enough.",
       s2: "The lab the learner already runs, plus the official exam objectives.",
       s3: "Work details learners paste in while practicing — real company names, real network information.",
@@ -638,12 +691,12 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       ex: "The employee answers a scenario question first (the existing quiz, unchanged). New step after it: ask the AI the same question, then check the AI's answer against the actual policy and flag where the AI got it wrong.",
       note: "The one real adaptation: with no hands-on tool, the learner checks the AI against the policy document. Same move, different reference."
     },
-    vendor: {
-      s1: "Whatever the customer's own AI policy allows.",
-      s2: "The product itself, in the demo or sandbox environment.",
-      s3: "Customer environments, passwords, and configuration details.",
-      ex: "The customer completes a task in the sandbox (the existing walkthrough, unchanged). New step after it: ask the AI how it would do the same task, then try the AI's steps and report which ones fail.",
-      note: "The sandbox the training already uses becomes the verification tool. Nothing new gets built."
+    bootcamp: {
+      s1: "The bootcamp's chosen assistant, or the learner's own. A free tier works.",
+      s2: "The project or lab the learner is already building in the course.",
+      s3: "Any real employer or client details a learner pastes in while practicing.",
+      ex: "A learner builds one milestone of the course project by hand (the existing assignment, unchanged). New step after it: ask the AI to review that milestone, then confirm or reject each suggestion against what the project actually requires.",
+      note: "The course project becomes the thing the AI gets checked against. Nothing new gets built."
     }
   };
   var pills = Array.prototype.slice.call(document.querySelectorAll('#ctxPills .pill'));
@@ -669,7 +722,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
       apply(p.getAttribute('data-ctx'), true);
     });
   });
-  apply('fk', false);
+  apply('nonprofit', false);
 })();
 
 /* ---- Agent demo ---- */
@@ -762,5 +815,26 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
     }, { threshold: 0.3 });
     ob.observe(board);
   } else { animate(); }
+})();
+
+/* ---- Certification job tasks: diagnose, then reveal ---- */
+(function(){
+  Array.prototype.slice.call(document.querySelectorAll('.jobtask')).forEach(function(task){
+    var opts = Array.prototype.slice.call(task.querySelectorAll('.qopt'));
+    var reveal = task.querySelector('.reveal');
+    var answered = false;
+    opts.forEach(function(o){
+      o.addEventListener('click', function(){
+        if(answered) return; answered = true;
+        opts.forEach(function(x){
+          if(x.getAttribute('data-correct') === '1') x.classList.add('correct');
+          if(x === o && x.getAttribute('data-correct') !== '1') x.classList.add('wrongpick');
+          x.setAttribute('aria-pressed', x === o ? 'true' : 'false');
+          x.disabled = true;
+        });
+        if(reveal) reveal.classList.add('show');
+      });
+    });
+  });
 })();
 </script>
