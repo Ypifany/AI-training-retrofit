@@ -260,6 +260,21 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
 .cert b{font-family:Archivo,sans-serif;font-size:12px;letter-spacing:.05em;color:var(--gold-deep);display:block;margin-bottom:2px}
 .cert .step-ai{border-left:3px solid var(--gold);padding-left:13px}
 .cert em{color:var(--ink)}
+.herocta{margin:6px 0 0}
+.ctabtn{display:inline-block;font-family:Archivo,sans-serif;font-weight:700;font-size:15px;padding:11px 18px;border-radius:999px;background:var(--navy);color:var(--navy-ink);text-decoration:none}
+.ctabtn:hover{filter:brightness(1.15)}
+.ctabtn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.ctabtn.gold{background:var(--gold);color:#1D1F24}
+.who{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;margin-top:10px}
+.whophoto img{display:block;width:100%;height:auto;border-radius:16px;background:#fff;border:1px solid var(--line)}
+.whoproof{margin:10px 0 14px;padding-left:20px}
+.whoproof li{margin:5px 0}
+.whoquote{margin:28px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px}
+.whoquote blockquote{margin:0;font-family:Archivo,sans-serif;font-weight:600;font-size:clamp(16px,2.2vw,19px);line-height:1.45}
+.whoquote blockquote p{margin:0}
+.whoquote figcaption{margin-top:10px;color:var(--muted);font-weight:600}
+.whocta{margin-top:24px}
+@media (max-width:760px){.who{grid-template-columns:1fr}.whophoto{max-width:340px}}
 </style>
 
 <div class="wrap">
@@ -270,6 +285,7 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   <h1>AI Retrofit Playbook</h1>
   <p class="promise">Keep the course you already teach. Add one AI step, and build the thing a tool cannot give you: <span class="hl">judgment you can stand behind.</span></p>
   <p class="lede">One useful AI step, added after an activity students already do. Nothing gets replaced. It costs little or nothing, and it is shown below on a real deck and on real certification questions.</p>
+  <p class="herocta"><a class="ctabtn" href="#who">Talk with Cheryl about your course</a></p>
 </header>
 
 <main id="main">
@@ -651,6 +667,34 @@ footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-si
   <div class="next">
     <b>WHAT TO DO NEXT</b>
     <p>Pick one lesson you already teach. Add a single AI step after an activity students already do, write one new learning objective, and run it once. That is the whole first step. To go deeper, open the click-through page on a screen with your instructors and walk one lesson together.</p>
+  </div>
+</section>
+
+<section id="who" aria-labelledby="who-title">
+  <h2 id="who-title">Who made this playbook</h2>
+  <div class="who">
+    <picture class="whophoto"><source srcset="img/cheryl-abram.webp" type="image/webp"><img src="img/cheryl-abram.jpg" width="800" height="800" alt="Cheryl Abram in a blue jacket, arms crossed, smiling" loading="lazy"></picture>
+    <div>
+      <p class="sub" style="font-size:16px;color:var(--ink)">Cheryl Abram designs and evaluates training, and she founded Ypifany. She built this playbook on a real course, the cybersecurity fundamentals deck shown above. She is also an Army veteran and a former social worker.</p>
+      <ul class="whoproof">
+        <li>Chief Learning Officer for Future Kings, a STEM and cybersecurity nonprofit</li>
+        <li>CompTIA certification work with Jason Learning through VIRCYB</li>
+        <li>Cyber certification program for Stafford County Public Schools</li>
+        <li>Lead evaluator for the Federal Executive Institute</li>
+        <li>Author of "Unlearning Evaluation" in T&amp;D Magazine, and a speaker at ATD</li>
+      </ul>
+      <p><a href="https://www.ypifany.org/about" target="_blank" rel="noopener">More about Cheryl</a></p>
+    </div>
+  </div>
+  <figure class="whoquote">
+    <blockquote><p>Cheryl Abram, through her work with Ypifany, has been an exceptional consultant, providing invaluable guidance and support to my cybersecurity firm. Her strategic insights and innovative ideas have significantly strengthened my service offerings and positioned my business more competitively within the cybersecurity field.</p></blockquote>
+    <figcaption>Dr. Wesley Phillips, HSOC Cyber</figcaption>
+  </figure>
+  <div class="spine whocta">
+    <div class="k">YOUR COURSE</div>
+    <p class="big">Want help using this with your course or program?</p>
+    <p>Tell Cheryl what you teach and where it is headed. You will hear back after she reviews your request.</p>
+    <p><a class="ctabtn gold" href="https://www.ypifany.org/start-a-conversation">Start a conversation</a></p>
   </div>
 </section>
 
